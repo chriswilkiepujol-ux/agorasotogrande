@@ -1,62 +1,29 @@
-# Things to confirm with Adolfo — agorasotogrande.com (updated 3 Nov 2026)
+# Pending from Adolfo — agorasotogrande.com (updated 3 Nov 2026, after Chris's answers)
 
-Facts currently on the testing site that are assumptions. Each one is written somewhere on the site; once Adolfo confirms, update `lib/pages.ts` / `lib/content.ts`.
+## Adolfo to send or decide
+- [ ] **Legal details** (company name, CIF, registered address) for Legal Notice, Privacy and Cookies — check with his legal advisor if needed.
+- [ ] **Title font**: Didot / Impact / Helvetica Bold — button at the bottom-left of the testing site to compare.
+- [ ] **Menu PDFs** for the group-dinners page.
+- [ ] **New homepage video** (current one is still served from the old WordPress site).
+- [ ] **Christmas lunches** for groups of 25+: offered? (site currently says yes)
+- [ ] **Corporate photos**: lunches, breakfasts, company events.
 
-## Answered at the 3 Nov meeting (done on the site)
-- [x] Capacity: no numbers anywhere (seated or standing). People enquire with their numbers.
-- [x] Minimum for a group dinner: **25** (was 20). Exclusive-hire minimum removed too.
-- [x] Enquiry email: info@agorasotogrande.com. Still needs the Resend key or webhook so the form actually sends.
-- [x] Instagram: keep our own photos for now, no API.
-- [x] Nights: Clandestina Tuesday, **Oasis Thursday (themed every week)**, **Perreo Lab Friday**, Daikiri Saturday. Section renamed "Our Summer Parties".
-- [x] Official logos received: Á mark in the scroll ring, wordmark in nav/footer, favicon.
-- [x] Partner logos: originals in full colour.
-- [x] Jose's wedding photos received; 9 without faces on the weddings page.
-- [x] Hero uses the official wordmark.
+## Chris
+- [ ] Send FourVenues the Channel Manager API request (Phase 2: black native events section, test on qa.agorasotogrande.com).
+- [ ] Create new GA4 + Search Console properties for the new site (only WordPress's own stats exist today; keep those for the before/after comparison).
+- [ ] Enquiry form delivery: Resend key or webhook so the form emails info@agorasotogrande.com.
 
-## Adolfo to send
-- [ ] Title font decision: Didot / Impact / Helvetica Bold (switch at the bottom-left of the testing site).
-- [ ] Menu PDFs for the group-dinners page.
-- [ ] New homepage video (current one is still served from the old WordPress site).
-- [ ] Corporate photos: lunches, breakfasts, company events.
-- [ ] Partner logo packs, especially a high-res Royal Bliss and Estrella Galicia (current files are small).
-- [ ] WordPress analytics export (or copy-paste) to compare against GSC/GA4 after launch.
+## Decided 3 Nov (done on the site or left as is)
+- Capacity: no numbers anywhere; group dinners from 25.
+- Phone +34 669 99 78 88 and hours: leave as is.
+- Tardeos, Christmas Eve, Boxing Day, New Year's Eve: leave as is; dates come through the FourVenues calendar.
+- Resident DJ "Fridays and Saturdays in December": removed (resident nights are a summer thing; off-season is event by event).
+- Dinners for pre-booked groups only, VIP table arrival cut-off, 18+, birthday extras, private hire Mon/Wed/Sun, invoicing Gib/UK/EU: stay as written.
+- References (companies/schools): not now; later through blog posts and backlinks.
+- Symbolic ceremonies and "most pre-weddings 30–80 guests": removed.
+- Instagram: own photos, no API. Partner logos: sourced online, full colour. Wedding photos: 9 without faces on the weddings page. Official logos in hero, nav, scroll cue and favicon.
 
-## Phase 2 / later
-- FourVenues API for a black, native events section (ask FourVenues for channel API access; test on qa.agorasotogrande.com).
-- Individual pages for each party, closer to summer.
-- Blog, once a few months of Search Console data show what to reinforce.
-
-## Still open from the earlier list
-
-### Formats
-- [ ] **Walk-in dinners**: site now says the restaurant is **pre-booked groups only**, no walk-in service. Confirm this is right for the whole year.
-
-### Christmas
-- [ ] **Tardeos**: site says "afternoon sessions on weekends through the Christmas season, dates on the calendar". Which days? Weekends only? From what date?
-- [ ] **Christmas lunches** for groups of 25+: offered?
-- [ ] Special nights over the holidays: Christmas Eve / 26 Dec / New Year's Eve — which ones actually open? (Three Kings removed as requested.)
-- [ ] Resident DJ "Fridays and Saturdays in December" — correct?
-
-### Club nights / tables
-- [ ] **Table arrival cut-off**: FourVenues shows 2:00 am for Oasis Halloween; site says "usually 1:00 or 2:00 am". Is there a standard?
-- [ ] **Age**: 18+ on all club nights?
-- [ ] **Birthday extras**: sparklers on bottles + name / "Happy Birthday" boards — anything else (e.g. photographer)? Cake removed as requested.
-- [ ] Weekday availability for private hire: site says "Monday, Wednesday and Sunday in season" (the days Google lists as closed). Correct?
-
-### Corporate
-- [ ] Can you invoice Gibraltar / UK / EU companies with Spanish VAT? (site says yes)
-- [ ] Any named companies or schools we can mention as references? ("Several international schools return every year" is on the graduations page — ok?)
-
-### Weddings
-- [ ] Symbolic ceremonies in the garden — ok to offer?
-- [ ] Pre-wedding dinners "most are 30–80 guests" — true to experience?
-
-### Contact / legal
-- [ ] **Phone on the site**: +34 669 99 78 88 (from the Google listing). Is this the number for enquiries?
-- [ ] **Legal name, CIF and registered address** for Legal Notice, Privacy and Cookie pages (placeholders now).
-- [ ] Opening hours per season for the footer / Google.
-
-### Assets
-- [ ] **Photos for Clandestina and Perreo Lab** nights, the restaurant/food and the terrace in daylight (for tardeos).
-- [ ] Google Search Console + GA4 access / property ID.
-
+## Later
+- Individual pages per party, closer to summer (photos of Clandestina / Perreo Lab nights then).
+- Blog once a few months of Search Console data show what to reinforce.
+- FourVenues API (see `claude/fourvenues-api-plan.md`).

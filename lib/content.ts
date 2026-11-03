@@ -22,11 +22,11 @@ export const media = {
   // Brand logos in their original colours, hosted in /public/partners. Shown on a light band so dark marks read.
   // `h` = display height in rem, tuned per logo so they look the same visual size.
   partners: [
-    { name: 'Estrella Galicia', src: '/partners/estrella-galicia.png', h: 4.25 },
+    { name: 'Estrella Galicia', src: '/partners/estrella-galicia.png', h: 5.5 },
     { name: 'Red Bull', src: '/partners/red-bull.png', h: 4.25 },
     { name: 'Bacardí', src: '/partners/bacardi.png', h: 5 },
     { name: 'Grey Goose', src: '/partners/grey-goose.png', h: 5 },
-    { name: 'Royal Bliss', src: '/partners/royal-bliss.png', h: 3.5 },
+    { name: 'Royal Bliss', src: '/partners/royal-bliss.png', h: 4.75 },
   ],
   fourvenues: 'https://www.fourvenues.com/en/agora-sotogrande',
   instagram: 'https://www.instagram.com/agorasotogrande/',

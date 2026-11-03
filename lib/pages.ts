@@ -179,7 +179,7 @@ const en: Dict = {
     sections: [
       { h2: 'Group menus', body: ['Set menus for groups from 25 guests, with a welcome drink and wine included. Vegetarian, vegan and allergen-free options on every menu. Lunches and dinners available.'] },
       { h2: 'Tardeos', body: ['Through the Christmas season Ágora opens in the afternoon for tardeos: afterwork and afternoon sessions with DJ, drinks and tables, so you can celebrate with the team or your friends and still be home at a reasonable hour. Dates are published on the calendar.'] },
-      { h2: 'The party after', body: ['Tables and bottle service on the club floor are reserved for dinner groups on request. Resident DJ on Fridays and Saturdays in December, and special nights over the holidays announced on the calendar.'] },
+      { h2: 'The party after', body: ['Tables and bottle service on the club floor are reserved for dinner groups on request. Special nights over the holidays are announced on the calendar.'] },
       { h2: 'For companies', body: ['One invoice, one contact, a private area for your group and the option of exclusive hire for larger companies. Branding on the screens and a short awards or speech moment can be added.'] },
     ],
     faqs: [
@@ -201,13 +201,12 @@ const en: Dict = {
       'The night before, the party after, or the whole day. Ágora is built for the part of a wedding where everyone dances: a garden terrace for dinner under the palms and a club floor with no curfew at midnight, with no transfers between venues.',
     ],
     sections: [
-      { h2: 'Pre-wedding dinners', body: ['The dinner the night before, for the two families and the friends who have travelled. A set menu on the terrace, a welcome drink in the garden and, if you want, the club floor afterwards. Groups from 25 guests; most pre-weddings are between 30 and 80.'] },
+      { h2: 'Pre-wedding dinners', body: ['The dinner the night before, for the two families and the friends who have travelled. A set menu on the terrace, a welcome drink in the garden and, if you want, the club floor afterwards. Groups from 25 guests.'] },
       { h2: 'Wedding parties', body: ['Ceremony and dinner elsewhere, party at Ágora. Guests arrive after dinner to a reserved venue, your playlist or our resident DJ, bottle service at the tables and a late bar. The easiest way to give a wedding a proper night out.'] },
       { h2: 'The whole day', body: ['For couples who want everything in one place.'], bullets: ['Welcome cocktail in the garden', 'Seated dinner on the terrace', 'First dance and party on the club floor with resident DJ or your own', 'Late bar and after-party', 'Exclusive hire of the whole venue'] },
       { h2: 'Also for', body: ['Rehearsal dinners, the day-after brunch, and engagement parties.'] },
     ],
     faqs: [
-      { q: 'Can we hold the ceremony at Ágora?', a: 'Symbolic ceremonies, yes, in the garden. Civil ceremonies are held at the town hall or a registered venue.' },
       { q: 'What time does the party end?', a: 'The club licence allows us to run until the early hours. We agree the end time with you.' },
       { q: 'Can we book only the party?', a: 'Yes. Wedding parties after a dinner elsewhere are one of our most common formats.' },
       { q: 'How many guests can a pre-wedding dinner be?', a: 'From 25 guests. Larger groups are welcome: tell us your numbers and we will suggest a seated dinner, a reception format or a mix of both.' },
@@ -439,7 +438,7 @@ const es: Dict = {
     sections: [
       { h2: 'Menús de grupo', body: ['Menús cerrados para grupos a partir de 25 personas, con copa de bienvenida y vino incluidos. Opciones vegetarianas, veganas y sin alérgenos en todos los menús. Comidas y cenas.'] },
       { h2: 'Tardeos', body: ['Durante la Navidad Ágora abre por la tarde para tardeos: sesiones de afterwork y de tarde con DJ, copas y mesas, para celebrarlo con el equipo o con los amigos y estar en casa a una hora razonable. Las fechas se publican en el calendario.'] },
-      { h2: 'La fiesta de después', body: ['Las mesas y el servicio de botellas en la pista se reservan para los grupos de cena bajo petición. DJ residente los viernes y sábados de diciembre, y noches especiales en fiestas anunciadas en el calendario.'] },
+      { h2: 'La fiesta de después', body: ['Las mesas y el servicio de botellas en la pista se reservan para los grupos de cena bajo petición. Las noches especiales de las fiestas se anuncian en el calendario.'] },
       { h2: 'Para empresas', body: ['Una factura, un interlocutor, una zona privada para tu grupo y la opción de local en exclusiva para empresas grandes. Se puede añadir imagen de marca en las pantallas y un momento de premios o discurso.'] },
     ],
     faqs: [
@@ -461,13 +460,12 @@ const es: Dict = {
       'La noche de antes, la fiesta de después o el día entero. Ágora está hecho para la parte de la boda en la que todo el mundo baila: una terraza jardín para cenar bajo las palmeras y una pista sin cierre a medianoche, sin traslados entre sitios.',
     ],
     sections: [
-      { h2: 'Cenas de preboda', body: ['La cena de la noche anterior, para las dos familias y los amigos que han viajado. Menú cerrado en la terraza, copa de bienvenida en el jardín y, si queréis, la pista después. Grupos a partir de 25; la mayoría de prebodas son de entre 30 y 80 personas.'] },
+      { h2: 'Cenas de preboda', body: ['La cena de la noche anterior, para las dos familias y los amigos que han viajado. Menú cerrado en la terraza, copa de bienvenida en el jardín y, si queréis, la pista después. Grupos a partir de 25 personas.'] },
       { h2: 'Fiestas de boda', body: ['Ceremonia y cena en otro sitio, fiesta en Ágora. Los invitados llegan después de cenar a un local reservado, con vuestra playlist o nuestro DJ residente, servicio de botellas en las mesas y barra hasta tarde. La forma más fácil de darle a una boda una noche de verdad.'] },
       { h2: 'El día entero', body: ['Para parejas que lo quieren todo en el mismo sitio.'], bullets: ['Cóctel de bienvenida en el jardín', 'Cena sentada en la terraza', 'Primer baile y fiesta en la pista con DJ residente o el vuestro', 'Barra libre y after', 'Local completo en exclusiva'] },
       { h2: 'También para', body: ['Cenas de ensayo, el brunch del día siguiente y fiestas de pedida.'] },
     ],
     faqs: [
-      { q: '¿Se puede hacer la ceremonia en Ágora?', a: 'Ceremonias simbólicas, sí, en el jardín. Las civiles se celebran en el ayuntamiento o en un lugar habilitado.' },
       { q: '¿A qué hora termina la fiesta?', a: 'La licencia de discoteca nos permite seguir hasta la madrugada. La hora de cierre la acordamos con vosotros.' },
       { q: '¿Podemos reservar solo la fiesta?', a: 'Sí. La fiesta de boda después de una cena en otro sitio es uno de nuestros formatos más habituales.' },
       { q: '¿De cuántas personas puede ser una cena de preboda?', a: 'A partir de 25. Los grupos grandes son bienvenidos: dinos cuántos sois y os proponemos cena sentada, formato cóctel o una mezcla de ambos.' },
