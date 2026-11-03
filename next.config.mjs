@@ -6,6 +6,12 @@ const nextConfig = {
 
   // English is the default language and lives at the root. Pages are prerendered under
   // /en/… and the root is rewritten to them, so /about/ serves /en/about/ without a redirect.
+  // Static media in /public: one week in browsers, a month at the edge. File names change when the media changes.
+  async headers() {
+    const cache = [{ key: 'Cache-Control', value: 'public, max-age=604800, s-maxage=2592000, stale-while-revalidate=86400' }];
+    return ['/video/:path*', '/photos/:path*', '/posters/:path*', '/partners/:path*', '/brand/:path*'].map((source) => ({ source, headers: cache }));
+  },
+
   async rewrites() {
     return {
       beforeFiles: [
