@@ -35,6 +35,10 @@ const nextConfig = {
       home('/category/:path*'),
       { source: '/author/:path*', destination: '/about/', statusCode: 301 },
 
+      // Old menu PDFs (AGORA-MENU-2024, wine and bottle menus) were the most-clicked links on the old site
+      // (~5,400 clicks in Jetpack). Send anyone with a saved or shared link to the menu page.
+      { source: '/wp-content/uploads/:path*', destination: '/menu/', statusCode: 301 },
+
       // Yoast sitemap names Google already knows
       { source: '/sitemap_index.xml', destination: '/sitemap.xml', statusCode: 301 },
       { source: '/:name-sitemap.xml', destination: '/sitemap.xml', statusCode: 301 },
