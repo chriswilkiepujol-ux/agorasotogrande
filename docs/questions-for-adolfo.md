@@ -10,13 +10,14 @@ Facts currently on the testing site that are assumptions. Each one is written so
 - [x] Nights: Clandestina Tuesday, **Oasis Thursday (themed every week)**, **Perreo Lab Friday**, Daikiri Saturday. Section renamed "Our Summer Parties".
 - [x] Official logos received: Á mark in the scroll ring, wordmark in nav/footer, favicon.
 - [x] Partner logos: originals in full colour.
+- [x] Jose's wedding photos received; 9 without faces on the weddings page.
+- [x] Hero uses the official wordmark.
 
 ## Adolfo to send
 - [ ] Title font decision: Didot / Impact / Helvetica Bold (switch at the bottom-left of the testing site).
 - [ ] Menu PDFs for the group-dinners page.
 - [ ] New homepage video (current one is still served from the old WordPress site).
 - [ ] Corporate photos: lunches, breakfasts, company events.
-- [ ] Jose's wedding photos (no faces): the Drive folder link is not visible to Chris's connected Google account; add it to Drive or send a zip.
 - [ ] Partner logo packs, especially a high-res Royal Bliss and Estrella Galicia (current files are small).
 - [ ] WordPress analytics export (or copy-paste) to compare against GSC/GA4 after launch.
 
