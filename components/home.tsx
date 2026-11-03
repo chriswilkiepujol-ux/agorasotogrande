@@ -18,8 +18,9 @@ export function Hero({ c, locale }: P) {
       <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink" />
       <div className="relative z-10 flex flex-col items-center px-6 pb-36 pt-24 text-center md:pb-40">
         <span className="font-script text-3xl text-sand md:text-5xl">{c.hero.pre}</span>
-        <h1 className="mt-2 h-display text-[22vw] leading-[0.85] md:text-[13rem] lg:text-[16rem]">ÁGORA</h1>
-        <span className="mt-1 text-[11px] tracking-[0.5em] uppercase text-bone/80 md:text-sm">Sotogrande</span>
+        <h1 className="mt-4 w-[86vw] max-w-[780px] md:mt-6">
+          <img src="/brand/agora-logo-white-hero.png" alt="Ágora Sotogrande" width={1596} height={517} className="h-auto w-full drop-shadow-[0_4px_30px_rgba(0,0,0,.35)]" fetchPriority="high" />
+        </h1>
         <p className="mt-8 font-display text-2xl italic text-bone md:text-4xl">{c.hero.tagline}</p>
         <p className="mt-3 max-w-md text-sm text-bone/70 md:text-base">{c.hero.sub}</p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
