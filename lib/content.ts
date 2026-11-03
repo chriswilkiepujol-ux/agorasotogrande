@@ -8,25 +8,25 @@ export { locales } from '@/lib/routes';
 export const media = {
   video: 'https://agorasotogrande.com/wp-content/uploads/2025/06/BACKGROUND-AGORA-WEB.m4v',
   poster: img('daikiri-closing-overhead', 1920),
-  logo: 'https://i0.wp.com/agorasotogrande.com/wp-content/uploads/2025/11/agora-logo-white-2-e1750879643690.webp?fit=300%2C109&ssl=1',
+  logo: '/brand/agora-logo-white.png',
   crowd: img('wedding-reception', 1920),
   dinner: img('wedding-table-setup', 1200),
   garden: img('oasis-pool-warm', 1920),
   menuPdf: '', // set when Adolfo sends the carta PDF, e.g. '/carta-agora-2026.pdf'
   posters: {
-    tuesday: 'https://i0.wp.com/agorasotogrande.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-30-at-19.58.32.jpeg?resize=820%2C1024&ssl=1',
-    oasis: 'https://i0.wp.com/agorasotogrande.com/wp-content/uploads/2025/06/Oasis-FV.jpg?resize=819%2C1024&ssl=1',
-    perreo: 'https://i0.wp.com/agorasotogrande.com/wp-content/uploads/2025/06/PerreoLab-FV.jpg?resize=819%2C1024&ssl=1',
-    saturday: 'https://i0.wp.com/agorasotogrande.com/wp-content/uploads/2026/06/web_portada_sabados.jpg.jpeg?resize=688%2C860&ssl=1',
+    tuesday: '/posters/clandestina.jpg',
+    oasis: '/posters/oasis.jpg',
+    perreo: '/posters/perreo-lab.jpg',
+    saturday: '/posters/daikiri.jpg',
   },
-  // Interim files from the old site. `tone` picks the CSS treatment: 'colour' originals are desaturated,
-  // 'white' originals are shown as they are. Replace with the brands' official logo packs when Adolfo gets them.
+  // Brand logos in their original colours, hosted in /public/partners. Shown on a light band so dark marks read.
+  // `h` = display height in rem, tuned per logo so they look the same visual size.
   partners: [
-    { name: 'Estrella Galicia', tone: 'colour', src: 'https://agorasotogrande.com/wp-content/uploads/2025/06/Estrella-Galicia-Logo-Web-e1751047717312.png' },
-    { name: 'Red Bull', tone: 'colour', src: 'https://agorasotogrande.com/wp-content/uploads/2025/06/Redbull-Logo-Web-e1751047684972.png' },
-    { name: 'Bacardi', tone: 'colour', src: 'https://agorasotogrande.com/wp-content/uploads/2025/06/Bacardi-Group-Logo-Web-e1751047746829.png' },
-    { name: 'Grey Goose', tone: 'white', src: 'https://agorasotogrande.com/wp-content/uploads/2025/06/Grey-Goose-Logo-Web-e1751047854768.png' },
-    { name: 'Royal Bliss', tone: 'white', src: 'https://agorasotogrande.com/wp-content/uploads/2025/06/Royal-Bliss-Logo-Web-e1751047881336.png' },
+    { name: 'Estrella Galicia', src: '/partners/estrella-galicia.png', h: 4.25 },
+    { name: 'Red Bull', src: '/partners/red-bull.png', h: 4.25 },
+    { name: 'Bacardí', src: '/partners/bacardi.png', h: 5 },
+    { name: 'Grey Goose', src: '/partners/grey-goose.png', h: 5 },
+    { name: 'Royal Bliss', src: '/partners/royal-bliss.png', h: 3.5 },
   ],
   fourvenues: 'https://www.fourvenues.com/en/agora-sotogrande',
   instagram: 'https://www.instagram.com/agorasotogrande/',
@@ -58,9 +58,9 @@ const en = {
   },
   agenda: { kicker: "What's on", title: 'Upcoming parties', body: 'Tickets and VIP tables for every night. Buy online and walk straight in.', cta: 'See the full calendar', book: 'VIP tables', tickets: 'Tickets' },
   family: {
-    kicker: 'The Ágora family',
-    title: 'Our parties',
-    body: 'Four brands, four different nights, one house.',
+    kicker: 'Every week in summer',
+    title: 'Our Summer Parties',
+    body: 'Four nights a week, four different parties, all summer long.',
   },
   celebrate: {
     kicker: 'Private events',
@@ -79,7 +79,7 @@ const en = {
   restaurant: {
     kicker: 'Group dinners',
     title: 'Dinner first, party after',
-    body: 'The restaurant opens for pre-booked groups from 20: company dinners, birthdays and pre-weddings on the garden terrace, then straight onto the dance floor with a table reserved for the group.',
+    body: 'The restaurant opens for pre-booked groups from 25: company dinners, birthdays and pre-weddings on the garden terrace, then straight onto the dance floor with a table reserved for the group.',
     cta: 'See menus and book',
   },
   reviews: { kicker: 'Reviews', title: 'What people say about Ágora', rating: '4.5', count: 'reviews on Google', cta: 'Read all reviews on Google', write: 'Write a review' },
@@ -138,9 +138,9 @@ const es: typeof en = {
   },
   agenda: { kicker: 'Calendario', title: 'Próximas fiestas', body: 'Entradas y mesas VIP para cada noche. Compra online y entra directo.', cta: 'Ver todo el calendario', book: 'Mesas VIP', tickets: 'Entradas' },
   family: {
-    kicker: 'La familia Ágora',
-    title: 'Nuestras fiestas',
-    body: 'Cuatro marcas, cuatro noches distintas, una misma casa.',
+    kicker: 'Cada semana en verano',
+    title: 'Nuestras fiestas de verano',
+    body: 'Cuatro noches a la semana, cuatro fiestas distintas, todo el verano.',
   },
   celebrate: {
     kicker: 'Eventos privados',
@@ -159,7 +159,7 @@ const es: typeof en = {
   restaurant: {
     kicker: 'Cenas de grupo',
     title: 'Primero la cena, después la fiesta',
-    body: 'El restaurante abre para grupos con reserva a partir de 20: cenas de empresa, cumpleaños y prebodas en la terraza jardín, y después directo a la pista con mesa reservada para el grupo.',
+    body: 'El restaurante abre para grupos con reserva a partir de 25: cenas de empresa, cumpleaños y prebodas en la terraza jardín, y después directo a la pista con mesa reservada para el grupo.',
     cta: 'Ver menús y reservar',
   },
   reviews: { kicker: 'Opiniones', title: 'Lo que dicen de Ágora', rating: '4,5', count: 'reseñas en Google', cta: 'Leer todas las reseñas en Google', write: 'Escribir una reseña' },

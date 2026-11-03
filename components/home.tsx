@@ -228,10 +228,10 @@ export function Reviews({ c, locale }: P) {
 
 export function Partners({ c }: P) {
   return (
-    <section className="border-t border-white/10 bg-night px-5 py-12 md:px-10 md:py-16">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-10 md:gap-x-20">
-        <span className="kicker w-full text-center">{c.partners.kicker}</span>
-        {media.partners.map((p) => <img key={p.name} src={p.src} alt={p.name} className={`partner-logo partner-logo-${p.tone} h-16 w-auto max-w-[44vw] object-contain md:h-24 md:max-w-none`} loading="lazy" />)}
+    <section className="bg-bone px-5 py-12 text-ink md:px-10 md:py-16">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-10 md:gap-x-16">
+        <span className="kicker w-full text-center !text-ink/60">{c.partners.kicker}</span>
+        {media.partners.map((p) => <img key={p.name} src={p.src} alt={p.name} className="partner-logo w-auto max-w-[40vw] object-contain md:max-w-none" style={{ height: `${p.h}rem` }} loading="lazy" />)}
       </div>
     </section>
   );
