@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body { @apply bg-ink text-bone font-body antialiased; }
+
+.kicker { @apply text-[11px] tracking-[0.28em] uppercase text-copper font-semibold; }
+.h-display { @apply font-display font-medium leading-[0.95] tracking-tight; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[13px] font-semibold tracking-[0.12em] uppercase transition; }
+.btn-solid { @apply bg-bone text-ink hover:bg-sand; }
+.btn-ghost { @apply border border-bone/40 text-bone hover:border-bone hover:bg-bone/10; }
+.section { @apply px-5 md:px-10 lg:px-16 py-20 md:py-28; }
+.pill-nav { backdrop-filter: blur(14px); background: rgba(11,11,13,.55); }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.mark-spin { animation: spin-slow 12s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .mark-spin { animation: none; } }
+
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .18; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
+
+/* ---- motion ---- */
+@keyframes drift { from { transform: scale(1); } to { transform: scale(1.07); } }
+.drift { animation: drift 16s ease-in-out infinite alternate; will-change: transform; }
+.js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+[data-parallax] { will-change: transform; transform: translateY(var(--py, 0px)) scale(1.15); }
+.nav-shell { transition: transform .35s ease, background-color .35s ease; }
+body.nav-hidden .nav-shell { transform: translateY(-130%); }
+body.scrolled .pill-nav { background: rgba(11,11,13,.82); }
+.tile-img { filter: brightness(.82); transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .5s ease; }
+.group:hover .tile-img { filter: brightness(1); transform: scale(1.05); }
+@media (prefers-reduced-motion: reduce) {
+  .drift { animation: none; }
+  [data-parallax] { transform: none; }
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .nav-shell, .tile-img { transition: none; }
+}
+
+/* Hero scroll cue: two chevrons that fall in sequence, nudging the visitor down. */
+@keyframes cue-fall { 0%, 100% { opacity: 0; transform: translateY(-6px); } 40%, 60% { opacity: 1; transform: translateY(0); } }
+.cue-arrow { animation: cue-fall 1.8s ease-in-out infinite; }
+.cue-arrow-2 { animation-delay: .25s; }
+.scroll-cue .mark-spin { opacity: 1; }
+.scroll-cue .mark-spin circle { stroke-width: 2.5; opacity: 1; }
+.scroll-cue .font-display { font-size: 1.9rem; }
+body.scrolled .scroll-cue { opacity: 0; pointer-events: none; }
+.scroll-cue { transition: opacity .5s ease, color .3s ease; filter: drop-shadow(0 2px 12px rgba(0,0,0,.45)); }
+@media (prefers-reduced-motion: reduce) { .cue-arrow { animation: none; opacity: 1; } }
+
+/* Partner logos: every file rendered as a single-weight white mark so mixed colour/white originals sit together. */
+.partner-logo { opacity: .75; transition: opacity .3s ease, filter .3s ease; }
+.partner-logo-colour { filter: grayscale(1) brightness(1.35) contrast(1.05); }
+.partner-logo:hover { filter: none; }
+.partner-logo:hover { opacity: 1; }
