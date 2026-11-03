@@ -6,7 +6,8 @@ export type { Locale };
 export { locales } from '@/lib/routes';
 
 export const media = {
-  video: 'https://agorasotogrande.com/wp-content/uploads/2025/06/BACKGROUND-AGORA-WEB.m4v',
+  // Re-encoded from the old site's 18 MB file. Replace both when Adolfo sends the new video.
+  video: { mobile: '/video/hero-480.mp4', desktop: '/video/hero-720.mp4' },
   poster: img('daikiri-closing-overhead', 1920),
   logo: '/brand/agora-logo-white.png',
   crowd: img('wedding-reception', 1920),
