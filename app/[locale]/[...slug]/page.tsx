@@ -40,7 +40,7 @@ export default function InnerPage({ params }: { params: Params }) {
         {k === 'privateEvents' && <EventTiles c={c} locale={l} />}
         {k === 'menu' && <MenuBlock c={c} />}
         {k === 'contact' ? <ContactBlock c={c} locale={l} /> : <Sections copy={copy} pageKey={k} />}
-        {k === 'events' && <Gallery pageKey={k} />}
+        {(k === 'events' || k === 'weddings') && <Gallery pageKey={k} />}
         <Faqs c={c} copy={copy} />
         {isClientType && <EventTiles c={c} locale={l} exclude={k} title={c.ui.otherEvents} />}
         <PageCta copy={copy} locale={l} />

@@ -11,11 +11,21 @@ export type Photo =
   | 'daikiri-closing-overhead' | 'daikiri-confetti' | 'daikiri-closing-white'
   | 'oasis-carnaval-overhead' | 'oasis-foam-overhead' | 'oasis-pool-warm' | 'oasis-projectx-stage' | 'oasis-foam-party'
   | 'oasis-candyland-overhead' | 'oasis-candyland' | 'oasis-pool-teal' | 'oasis-stage-blue' | 'oasis-sportslegends-stage' | 'oasis-pool-overhead'
-  | 'wedding-garden-tables' | 'wedding-table-setup' | 'wedding-dinner-overhead' | 'wedding-reception' | 'wedding-dinner';
+  | 'wedding-garden-tables' | 'wedding-table-setup' | 'wedding-dinner-overhead' | 'wedding-reception' | 'wedding-dinner'
+  | LocalPhoto;
+
+/* Photos kept in the repo under /public/photos (J&B wedding party, Nov 2026, chosen without recognisable faces). */
+const localPhotos = [
+  'wedding-party-overhead', 'wedding-party-casino-table', 'wedding-party-casino-hands', 'wedding-party-shots',
+  'wedding-party-shots-pour', 'wedding-party-cocktail', 'wedding-party-platter', 'wedding-party-stage', 'wedding-party-confetti',
+] as const;
+type LocalPhoto = (typeof localPhotos)[number];
+const isLocal = (n: string): n is LocalPhoto => (localPhotos as readonly string[]).includes(n);
 
 /** Optimised URL. w must be one of Next's deviceSizes: 640 750 828 1080 1200 1920 2048 3840. */
 export function img(name: Photo, w: 640 | 750 | 828 | 1080 | 1200 | 1920 | 2048 = 1920, q = 72): string {
-  return `/_next/image?url=${encodeURIComponent(BLOB + name + '.jpg')}&w=${w}&q=${q}`;
+  const src = isLocal(name) ? `/photos/${name}.jpg` : BLOB + name + '.jpg';
+  return `/_next/image?url=${encodeURIComponent(src)}&w=${w}&q=${q}`;
 }
 
 /** Header photo for each inner page. Each hero is used once across the site; the client-type heroes
@@ -44,12 +54,13 @@ export const pageSections: Partial<Record<PageKey, Photo[]>> = {
   privateEvents: ['wedding-table-setup', 'daikiri-stage-night', 'terrace-crowd', 'oasis-foam-overhead'],
   corporate: ['wedding-dinner', 'daikiri-stage', 'oasis-stage-blue'],
   christmas: ['daikiri-closing-overhead', 'daikiri-confetti', 'daikiri-lights', 'wedding-table-setup'],
-  weddings: ['wedding-reception', 'wedding-dinner', 'wedding-table-setup', 'oasis-pool-warm'],
+  weddings: ['wedding-reception', 'wedding-party-stage', 'wedding-table-setup', 'wedding-party-platter'],
   birthdays: ['daikiri-stage-night', 'oasis-pool-teal', 'oasis-foam-party'],
   graduations: ['oasis-candyland-overhead', 'oasis-candyland', 'oasis-sportslegends-stage'],
 };
 
-/** Photo strip on the calendar page only. */
+/** Photo strips: calendar page and weddings (wedding-party shots). */
 export const pageGallery: Partial<Record<PageKey, Photo[]>> = {
+  weddings: ['wedding-party-casino-table', 'wedding-party-shots-pour', 'wedding-party-confetti', 'wedding-party-casino-hands', 'wedding-party-cocktail', 'wedding-party-overhead'],
   events: ['oasis-foam-overhead', 'oasis-projectx-stage', 'daikiri-stage', 'oasis-candyland-overhead', 'daikiri-confetti', 'oasis-pool-teal'],
 };
