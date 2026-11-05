@@ -86,7 +86,7 @@ const en = {
   reviews: { kicker: 'Reviews', title: 'What people say about Ágora', rating: '4.5', count: 'reviews on Google', cta: 'Read all reviews on Google', write: 'Write a review' },
   partners: { kicker: 'Partners', title: 'Who we work with' },
   cta: { title: 'Going out tonight?', body: 'Get tickets or a VIP table for the next party, or tell us what you want to celebrate.', book: 'Tickets & VIP tables', event: 'Plan an event' },
-  footer: { address: 'Centro Comercial Mar y Sol, Avenida Arenilla 2, 11310 Sotogrande, San Roque (Cádiz)', hours: 'Seasonal opening hours in the calendar', follow: 'Follow us', legal: 'Legal notice', privacy: 'Privacy', cookies: 'Cookies', rights: 'All rights reserved.' },
+  footer: { tagline: 'Club nights, VIP tables and private events on the Costa del Sol.', visit: 'Visit', contact: 'Contact', explore: 'Explore', poweredBy: 'Powered by', address: 'Centro Comercial Mar y Sol, Avenida Arenilla 2, 11310 Sotogrande, San Roque (Cádiz)', hours: 'Seasonal opening hours in the calendar', follow: 'Follow us', legal: 'Legal notice', privacy: 'Privacy', cookies: 'Cookies', rights: 'All rights reserved.' },
   ui: {
     breadcrumbHome: 'Home',
     viewPage: 'Find out more',
@@ -166,7 +166,7 @@ const es: typeof en = {
   reviews: { kicker: 'Opiniones', title: 'Lo que dicen de Ágora', rating: '4,5', count: 'reseñas en Google', cta: 'Leer todas las reseñas en Google', write: 'Escribir una reseña' },
   partners: { kicker: 'Colaboradores', title: 'Con quienes trabajamos' },
   cta: { title: '¿Salimos esta noche?', body: 'Consigue entradas o una mesa VIP para la próxima fiesta, o cuéntanos qué quieres celebrar.', book: 'Entradas y mesas VIP', event: 'Organiza tu evento' },
-  footer: { address: 'Centro Comercial Mar y Sol, Avenida Arenilla 2, 11310 Sotogrande, San Roque (Cádiz)', hours: 'Horarios por temporada en el calendario', follow: 'Síguenos', legal: 'Aviso legal', privacy: 'Privacidad', cookies: 'Cookies', rights: 'Todos los derechos reservados.' },
+  footer: { tagline: 'Fiestas, mesas VIP y eventos privados en la Costa del Sol.', visit: 'Visítanos', contact: 'Contacto', explore: 'Explora', poweredBy: 'Powered by', address: 'Centro Comercial Mar y Sol, Avenida Arenilla 2, 11310 Sotogrande, San Roque (Cádiz)', hours: 'Horarios por temporada en el calendario', follow: 'Síguenos', legal: 'Aviso legal', privacy: 'Privacidad', cookies: 'Cookies', rights: 'Todos los derechos reservados.' },
   ui: {
     breadcrumbHome: 'Inicio',
     viewPage: 'Ver más',
