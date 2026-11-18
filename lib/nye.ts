@@ -2,7 +2,7 @@
 
    Release data lives in lib/nye-data.json and is refreshed automatically twice a day by
    scripts/update-nye.mjs (run by a scheduled task, which commits and pushes when it changes).
-   After `endsAt` the promo disappears on its own. */
+   At `endsAt` (31 Dec, 23:00 Madrid) the promo disappears on its own. */
 import data from './nye-data.json';
 
 export type ReleaseStatus = 'sold' | 'on' | 'next';
@@ -10,7 +10,9 @@ export type Release = { n: number; name: string; price: number; status: ReleaseS
 
 export const nye = {
   active: true,
-  endsAt: '2027-01-01T06:00:00+01:00',
+  // Pop-up and corner button disappear at this moment, checked in each visitor's browser, so no
+  // deploy is needed. Change the time here if Adolfo confirms a different cut-off.
+  endsAt: '2026-12-31T23:00:00+01:00',
   checked: data.checked,
   // FourVenues event route; /events/#<eventHash> opens the event inside our own calendar.
   eventHash: data.eventHash,

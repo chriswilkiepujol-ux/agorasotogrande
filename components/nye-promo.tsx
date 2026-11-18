@@ -9,7 +9,8 @@ import type { Locale } from '@/lib/content';
      choice is made (or after 15 s) so it never stacks on the cookie banner.
    - Closing it hides it for a day; a small button stays in the corner to reopen it.
    - "Get your tickets" opens the NYE event inside our own calendar (/events/#events/<slug>).
-   - Disappears after nye.endsAt. Release figures live in lib/nye.ts. */
+   - Disappears at nye.endsAt (31 Dec 23:00), also for visitors who already have the page open.
+     Release figures live in lib/nye-data.json. */
 
 const SEEN = 'agora-nye-seen';        // sessionStorage: already shown this visit
 const SNOOZE = 'agora-nye-snooze';    // localStorage: closed, timestamp
@@ -32,11 +33,15 @@ export function NyePromo({ locale, eventsHref }: { locale: Locale; eventsHref: s
   const isLast = !!current && (current.final || !next);
 
   useEffect(() => {
-    if (!nye.active || Date.now() > Date.parse(nye.endsAt)) return;
+    const msLeft = Date.parse(nye.endsAt) - Date.now();
+    if (!nye.active || msLeft <= 0) return;
     setLive(true);
-    if (window.location.hash.includes(nye.eventHash)) return; // already looking at the event
+    // Hide at the cut-off even if the page is already open (only scheduled when it is within a day).
+    const expiry = msLeft < 86400000 ? window.setTimeout(() => { setOpen(false); setLive(false); }, msLeft) : undefined;
+    const stopExpiry = () => { if (expiry) window.clearTimeout(expiry); };
+    if (window.location.hash.includes(nye.eventHash)) return stopExpiry; // already looking at the event
     const snoozed = Number(get(window.localStorage, SNOOZE) || 0);
-    if (get(window.sessionStorage, SEEN) || Date.now() - snoozed < DAY) return;
+    if (get(window.sessionStorage, SEEN) || Date.now() - snoozed < DAY) return stopExpiry;
 
     let done = false;
     const started = Date.now();
@@ -53,7 +58,7 @@ export function NyePromo({ locale, eventsHref }: { locale: Locale; eventsHref: s
     const onScroll = () => { if (window.scrollY > window.innerHeight * 0.6) show(); };
     window.addEventListener('scroll', onScroll, { passive: true });
     function cleanup() { window.clearInterval(timer); window.removeEventListener('scroll', onScroll); }
-    return cleanup;
+    return () => { cleanup(); if (expiry) window.clearTimeout(expiry); };
   }, []);
 
   const close = useCallback(() => {
