@@ -219,28 +219,47 @@ export function MenuStrip({ c, locale }: { c: Content; locale: Locale }) {
   );
 }
 
+/* Menu page: the event menus as paper cards (cover + one per menu). Each card is a light image of
+   that PDF page and opens the PDF at that page, so nothing heavy loads until someone asks for it. */
 export function MenuBlock({ c }: { c: Content }) {
+  if (!media.menuPdf) {
+    return (
+      <section className="section bg-ink">
+        <div className="mx-auto flex min-h-[240px] max-w-7xl items-center justify-center rounded-2xl border border-dashed border-white/20 p-10 text-center text-bone/60">{c.ui.menuSoon}</div>
+      </section>
+    );
+  }
   return (
-    <section className="section bg-ink">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12 md:items-start">
-        <div className="md:col-span-7">
-          {media.menuPdf ? (
-            <>
-              <object data={media.menuPdf} type="application/pdf" className="h-[80vh] w-full rounded-2xl border border-white/10" aria-label="Menu PDF" />
-              <p className="mt-6 flex flex-wrap gap-3">
-                <a href={media.menuPdf} target="_blank" rel="noopener" className="btn btn-solid">{c.ui.menuOpen}</a>
-                <a href={media.menuPdf} download className="btn btn-ghost">{c.ui.menuDownload}</a>
-              </p>
-              {c.ui.menuLang && <p className="mt-3 text-sm text-bone/50">{c.ui.menuLang}</p>}
-            </>
-          ) : (
-            <div className="flex min-h-[320px] items-center justify-center rounded-2xl border border-dashed border-white/20 p-10 text-center text-bone/60">{c.ui.menuSoon}</div>
-          )}
+    <section className="section border-t border-white/10 bg-night" id="menus">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
+          <div className="max-w-2xl">
+            <p className="kicker">{c.ui.eventMenus}</p>
+            <h2 className="mt-3 h-display text-4xl md:text-5xl">{c.ui.menusTitle}</h2>
+            <p className="mt-4 text-bone/70">{c.ui.menusIntro}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a href={media.menuPdf} target="_blank" rel="noopener" className="btn btn-solid">{c.ui.menuOpen}</a>
+            <a href={media.menuPdf} download className="btn btn-ghost">{c.ui.menuDownload}</a>
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-3 md:col-span-5">
-          <div className="overflow-hidden rounded-2xl bg-smoke"><img src={img('wedding-table-setup', 828)} alt="" className="aspect-[4/5] w-full object-cover" loading="lazy" /></div>
-          <div className="overflow-hidden rounded-2xl bg-smoke"><img src={img('wedding-dinner', 828)} alt="" className="aspect-[4/5] w-full object-cover" loading="lazy" /></div>
-        </div>
+        <ul className="menu-cards mt-10 md:mt-12">
+          {c.ui.menuCards.map((m) => (
+            <li key={m.page}>
+              <a href={`${media.menuPdf}#page=${m.page}`} target="_blank" rel="noopener" className="menu-card group" aria-label={`${m.name}${m.price ? `, ${m.price}` : ''}: ${c.ui.menuOpen}`}>
+                <span className="menu-paper">
+                  <img src={`/menus/menu-page-${m.page}.jpg`} alt="" width={720} height={1113} loading="lazy" />
+                </span>
+                <span className="mt-4 flex items-baseline justify-between gap-3">
+                  <span className="font-display text-xl md:text-2xl">{m.name}</span>
+                  {m.price && <span className="text-sm font-semibold text-copper">{m.price}</span>}
+                </span>
+                <span className="mt-1 block text-sm text-bone/55">{m.note}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {c.ui.menuLang && <p className="mt-8 text-sm text-bone/45">{c.ui.menuLang}</p>}
       </div>
     </section>
   );

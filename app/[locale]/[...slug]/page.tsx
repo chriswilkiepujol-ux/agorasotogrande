@@ -38,8 +38,8 @@ export default function InnerPage({ params }: { params: Params }) {
         <PageHeader c={c} locale={l} pageKey={k} copy={copy} />
         {k === 'events' && <Calendar c={c} locale={l} />}
         {k === 'privateEvents' && <EventTiles c={c} locale={l} />}
-        {k === 'menu' && <MenuBlock c={c} />}
         {k === 'contact' ? <ContactBlock c={c} locale={l} /> : <Sections copy={copy} pageKey={k} />}
+        {k === 'menu' && <MenuBlock c={c} />}
         {(k === 'events' || k === 'weddings') && <Gallery pageKey={k} />}
         {(k === 'privateEvents' || isClientType) && <MenuStrip c={c} locale={l} />}
         <Faqs c={c} copy={copy} />
