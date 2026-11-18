@@ -27,7 +27,9 @@ export function NyePromo({ locale, eventsHref }: { locale: Locale; eventsHref: s
 
   const euro = (n: number) => (locale === 'es' ? `${n} €` : `€${n}`);
   const current = nye.releases.find((r) => r.status === 'on');
+  const next = nye.releases.find((r) => r.status === 'next');
   const soldCount = nye.releases.filter((r) => r.status === 'sold').length;
+  const isLast = !!current && (current.final || !next);
 
   useEffect(() => {
     if (!nye.active || Date.now() > Date.parse(nye.endsAt)) return;
@@ -95,40 +97,60 @@ export function NyePromo({ locale, eventsHref }: { locale: Locale; eventsHref: s
         <div className="nye-backdrop" onClick={close}>
           <div role="dialog" aria-modal="true" aria-labelledby="nye-title" className="nye-modal" onClick={(e) => e.stopPropagation()}>
             <button ref={closeRef} type="button" onClick={close} className="nye-close" aria-label={t.close}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
             </button>
 
-            <a href={ticketsHref} onClick={goToTickets} className="nye-flyer" tabIndex={-1} aria-hidden="true">
-              <img src={nye.flyer} alt={t.flyerAlt} />
-            </a>
+            <div className="nye-flyer" aria-hidden="true">
+              <img src={nye.flyer} alt="" />
+            </div>
 
             <div className="nye-body">
-              <p className="kicker">{t.kicker}</p>
-              <h2 id="nye-title" className="mt-3 h-display text-3xl md:text-4xl">{t.title}</h2>
+              <header>
+                <p className="kicker">{t.kicker}</p>
+                <h2 id="nye-title" className="mt-2 h-display text-[2rem] leading-none md:text-[2.6rem]">{t.title}</h2>
+              </header>
 
-              <p className="mt-5 text-lg font-semibold text-bone">
-                {current ? t.onSale(t.ordinal(current.n), euro(current.price)) : t.allSold}
-              </p>
-              <p className="mt-1 text-sm text-bone/65">{t.soldCount(soldCount, nye.releases.length)}</p>
-
-              <ol className="nye-releases" aria-label="Releases">
-                {nye.releases.map((r) => (
-                  <li key={r.n} className={`nye-rel nye-rel-${r.status}`}>
-                    <span className="nye-rel-n">{r.final ? t.final : t.ordinal(r.n)}</span>
-                    <span className="nye-rel-p">{euro(r.price)}</span>
-                    {r.status === 'sold' && <span className="sr-only">{t.sold}</span>}
-                  </li>
-                ))}
-              </ol>
-
-              <p className="mt-5 text-sm text-bone/75">{t.includes}</p>
-              <p className="mt-1 text-sm text-copper">{t.vip(euro(nye.vip.price), nye.vip.fewLeft)}</p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <a href={ticketsHref} onClick={goToTickets} className="btn btn-solid">{t.cta}</a>
-                <button type="button" onClick={close} className="text-sm text-bone/55 underline underline-offset-4 hover:text-bone">{t.later}</button>
+              <div className="nye-card">
+                {current ? (
+                  <>
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <span className="nye-badge"><span className="nye-badge-dot" aria-hidden="true" />{t.onSaleNow}</span>
+                        <p className="mt-2 text-sm font-semibold text-bone">{t.releaseName(current.n, current.final)}{current.fewLeft ? ` · ${t.fewLeft}` : ''}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="nye-price">{euro(current.price)}</p>
+                        <p className="text-[11px] text-bone/50">{t.perPerson}</p>
+                      </div>
+                    </div>
+                    <div className="nye-bar" aria-hidden="true">
+                      {nye.releases.map((r) => <span key={r.n} className={`nye-seg nye-seg-${r.status}`} />)}
+                    </div>
+                    <p className="flex flex-wrap justify-between gap-x-4 gap-y-1 text-xs text-bone/60">
+                      <span>{t.progress(soldCount, nye.releases.length)}</span>
+                      <span className="text-bone/80">{isLast ? t.lastOne : next ? t.nextAt(euro(next.price)) : ''}</span>
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-lg font-semibold text-bone">{t.allSold}</p>
+                    <p className="mt-1 text-sm text-bone/60">{t.allSoldNote}</p>
+                  </>
+                )}
               </div>
-              <p className="mt-4 text-[11px] text-bone/40">{t.fee}</p>
+
+              <ul className="nye-details">
+                {t.details.map((d) => <li key={d}>{d}</li>)}
+              </ul>
+              {nye.vip.price && !nye.vip.soldOut && <p className="text-center text-xs text-copper md:text-left">{t.vip(euro(nye.vip.price), nye.vip.fewLeft)}</p>}
+
+              <div className="nye-actions">
+                <a href={ticketsHref} onClick={goToTickets} className="nye-cta">
+                  {current ? t.cta(euro(current.price)) : t.ctaPlain}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+                <button type="button" onClick={close} className="nye-later">{t.later}</button>
+              </div>
             </div>
           </div>
         </div>
