@@ -7,7 +7,10 @@ html { scroll-behavior: smooth; }
 body { @apply bg-ink text-bone font-body antialiased; }
 
 .kicker { @apply text-[11px] tracking-[0.28em] uppercase text-copper font-semibold; }
-.h-display { @apply font-display font-medium leading-[0.95] tracking-tight; }
+.h-display { @apply font-display leading-[0.95] tracking-tight; font-weight: 560; }
+/* Bodoni Moda gets very fine hairlines at display sizes (auto optical sizing). A lower optical size
+   and a slightly heavier weight keep the Didot look but make thin strokes readable. */
+.font-display { font-variation-settings: 'opsz' 24; }
 .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[13px] font-semibold tracking-[0.12em] uppercase transition; }
 .btn-solid { @apply bg-bone text-ink hover:bg-sand; }
 .btn-ghost { @apply border border-bone/40 text-bone hover:border-bone hover:bg-bone/10; }
@@ -61,3 +64,39 @@ html[data-font="impact"] .font-display, html[data-font="impact"] .h-display {
 html[data-font="helvetica"] .font-display, html[data-font="helvetica"] .h-display {
   font-family: "Helvetica Neue", Helvetica, "Inter Tight", Arial, sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 0.95;
 }
+
+/* FourVenues embed: their dark theme is transparent with light text, so it sits on our dark surface.
+   The site declares color-scheme: dark; when an iframe's colour scheme differs from the page inside it,
+   browsers paint an opaque WHITE backdrop behind it (white page + light text = unreadable). Declaring
+   the iframe as light keeps it transparent so our dark frame shows through. */
+.fv-frame iframe { color-scheme: light; background: transparent; }
+.fv-frame { border-radius: 1rem; border: 1px solid rgba(243,239,231,.08); background: #0b0b0d; padding: .5rem; overflow: hidden; }
+@media (min-width: 768px) { .fv-frame { padding: 1rem; } }
+
+/* New Year's Eve promo (components/nye-promo.tsx) */
+.nye-backdrop { position: fixed; inset: 0; z-index: 70; display: flex; align-items: center; justify-content: center; padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)); background: rgba(5,5,6,.78); backdrop-filter: blur(6px); animation: nye-fade .35s ease both; }
+.nye-modal { position: relative; display: grid; width: 100%; max-width: 860px; max-height: calc(100svh - 24px); overflow: auto; border-radius: 1.25rem; border: 1px solid rgba(243,239,231,.12); background: #0b0b0d; box-shadow: 0 30px 80px rgba(0,0,0,.6); animation: nye-rise .45s cubic-bezier(.2,.8,.2,1) both; }
+@media (min-width: 768px) { .nye-modal { grid-template-columns: 40% 1fr; overflow: hidden; } }
+.nye-flyer { display: block; background: #000; }
+.nye-flyer img { display: block; width: 100%; height: 34svh; object-fit: cover; object-position: 50% 42%; }
+@media (min-width: 768px) { .nye-flyer img { height: 100%; min-height: 520px; } }
+.nye-body { padding: 1.5rem 1.25rem 1.5rem; }
+@media (min-width: 768px) { .nye-body { padding: 2.5rem 2.25rem; overflow: auto; max-height: calc(100svh - 24px); } }
+.nye-close { position: absolute; top: .75rem; right: .75rem; z-index: 2; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; color: #f3efe7; background: rgba(11,11,13,.7); border: 1px solid rgba(243,239,231,.2); }
+.nye-close:hover { background: rgba(243,239,231,.12); }
+.nye-close:focus-visible, .nye-pill:focus-visible { outline: 2px solid #c9865b; outline-offset: 2px; }
+.nye-releases { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; padding: 0; list-style: none; }
+.nye-rel { display: flex; flex-direction: column; align-items: center; min-width: 3.6rem; padding: .4rem .55rem; border-radius: .6rem; border: 1px solid rgba(243,239,231,.15); font-size: 11px; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.nye-rel-n { text-transform: uppercase; letter-spacing: .08em; opacity: .75; }
+.nye-rel-p { font-weight: 700; font-size: 13px; }
+.nye-rel-sold { color: rgba(243,239,231,.35); border-color: rgba(243,239,231,.08); text-decoration: line-through; }
+.nye-rel-on { background: #f3efe7; color: #0b0b0d; border-color: #f3efe7; box-shadow: 0 0 0 3px rgba(201,134,91,.35); }
+.nye-rel-next { color: #f3efe7; }
+.nye-pill { position: fixed; z-index: 45; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: .55rem; padding: .65rem 1rem; border-radius: 999px; background: #f3efe7; color: #0b0b0d; font-size: 13px; font-weight: 700; letter-spacing: .02em; box-shadow: 0 10px 30px rgba(0,0,0,.45); transition: transform .2s ease; }
+.nye-pill:hover { transform: translateY(-2px); }
+.nye-pill-price { padding: .1rem .5rem; border-radius: 999px; background: #0b0b0d; color: #f3efe7; font-size: 12px; }
+.nye-pill-dot { width: .5rem; height: .5rem; border-radius: 999px; background: #e8623a; animation: nye-pulse 1.8s ease-in-out infinite; }
+@keyframes nye-fade { from { opacity: 0; } }
+@keyframes nye-rise { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+@keyframes nye-pulse { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .nye-backdrop, .nye-modal, .nye-pill-dot { animation: none; } }

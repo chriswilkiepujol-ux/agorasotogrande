@@ -51,7 +51,7 @@ export function LiveEvents({ c, locale }: P) {
           </div>
           <a href={href('events', locale)} className="btn btn-ghost">{c.agenda.cta}</a>
         </div>
-        <div className="overflow-hidden rounded-2xl bg-bone p-2 md:p-4"><FourVenuesEvents /></div>
+        <div className="fv-frame"><FourVenuesEvents view="events" /></div>
       </div>
     </section>
   );

@@ -50,7 +50,7 @@ export const pageHero: Record<Exclude<PageKey, 'home'>, Photo> = {
 export const pageSections: Partial<Record<PageKey, Photo[]>> = {
   about: ['oasis-stage-blue', 'daikiri-lights', 'wedding-dinner', 'oasis-carnaval-overhead'],
   events: ['oasis-pool-warm', 'terrace-crowd'],
-  menu: ['wedding-table-setup'],
+  menu: ['wedding-table-setup', 'wedding-party-platter'],
   privateEvents: ['wedding-table-setup', 'daikiri-stage-night', 'terrace-crowd', 'oasis-foam-overhead'],
   corporate: ['wedding-dinner', 'daikiri-stage', 'oasis-stage-blue'],
   christmas: ['daikiri-closing-overhead', 'daikiri-confetti', 'daikiri-lights', 'wedding-table-setup'],

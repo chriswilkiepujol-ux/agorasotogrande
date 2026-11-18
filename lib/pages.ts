@@ -92,12 +92,14 @@ const en: Dict = {
     h1: 'Group Dinners',
     intro: [
       'The restaurant at Ágora opens for pre-booked groups: company dinners, birthdays, pre-wedding dinners and friends who want dinner and the party in the same place. We do not run a walk-in service; every dinner is arranged in advance with a set menu.',
-      'Mediterranean kitchen with a nod to the south, served on the garden terrace. Menus change with the season; the current version is below.',
+      'Mediterranean kitchen with a nod to the south, served on the garden terrace. Three event menus for 2026–2027, Ares, Zeus and Hermes, are below.',
     ],
     sections: [
-      { h2: 'How a group dinner works', body: ['Tell us the date, the number of guests and the occasion. We send the menus and a quote, you confirm with a deposit, and on the night your table is ready on the terrace with the party afterwards a few steps away.'], bullets: ['Groups from 25 guests', 'Set menus with welcome drink and wine included', 'Vegetarian, vegan and allergen-free options on every menu', 'Tables and bottle service on the club floor reserved for dinner groups'] },
+      { h2: 'How a group dinner works', body: ['Tell us the date, the number of guests and the occasion. We send the menus and a quote, you confirm with a deposit, and on the night your table is ready on the terrace with the party afterwards a few steps away.'], bullets: ['Groups from 25 guests', 'Three set menus from €45 per person + VAT, drinks included during the meal', 'Alternatives for allergies and dietary needs, arranged in advance', 'Tables and bottle service on the club floor reserved for dinner groups'] },
+      { h2: 'The menus: Ares, Zeus and Hermes', body: ['Prices are per person, plus VAT. White, red and rosé wine, Estrella Galicia beer, water and soft drinks are included during the meal.'], bullets: ['Ares, €45: cold and hot canapés to share (cheeses and Iberian cured meats, Russian salad, foie toasts, gyozas, chicken skewers, mini tacos, croquettes) and desserts. Made for a standing reception.', 'Zeus, €55: starters to share, then Iberian presa with sweet potato or sea bass with spinach and baby potatoes, and desserts to share.', 'Hermes, €60: four starters to share, then beef sirloin with four-pepper sauce or slow-confit cod, and desserts to share.'] },
     ],
     faqs: [
+      { q: 'How much do the group menus cost?', a: 'Ares is €45, Zeus €55 and Hermes €60 per person, plus VAT, with drinks included during the meal. The full menus are in the PDF on this page.' },
       { q: 'Can I book a table for two for dinner?', a: 'Not at the moment. Dinners are for pre-booked groups from 25 guests. For a night out, book a VIP table on a club night through the calendar.' },
       { q: 'Do group dinners run all year?', a: 'Yes, by arrangement, including outside the club season. Weekday dinners are available for companies.' },
       { q: 'Can we choose dishes individually?', a: 'Menus are set per group so the kitchen can serve everyone together, with alternatives for dietary needs chosen in advance.' },
@@ -177,7 +179,7 @@ const en: Dict = {
       'Dinner first, party after, all in one place. Group menus for companies, clubs and groups of friends from late November through the holidays, with the club floor open after dinner and afternoon tardeos on weekends.',
     ],
     sections: [
-      { h2: 'Group menus', body: ['Set menus for groups from 25 guests, with a welcome drink and wine included. Vegetarian, vegan and allergen-free options on every menu. Lunches and dinners available.'] },
+      { h2: 'Group menus', body: ['Three set menus for groups from 25 guests, from €45 per person + VAT, with wine, beer, water and soft drinks included during the meal. Alternatives for allergies and dietary needs arranged in advance. Lunches and dinners available; see the menus in the PDF.'] },
       { h2: 'Tardeos', body: ['Through the Christmas season Ágora opens in the afternoon for tardeos: afterwork and afternoon sessions with DJ, drinks and tables, so you can celebrate with the team or your friends and still be home at a reasonable hour. Dates are published on the calendar.'] },
       { h2: 'The party after', body: ['Tables and bottle service on the club floor are reserved for dinner groups on request. Special nights over the holidays are announced on the calendar.'] },
       { h2: 'For companies', body: ['One invoice, one contact, a private area for your group and the option of exclusive hire for larger companies. Branding on the screens and a short awards or speech moment can be added.'] },
@@ -353,12 +355,14 @@ const es: Dict = {
     h1: 'Cenas de grupo',
     intro: [
       'El restaurante de Ágora abre para grupos con reserva: cenas de empresa, cumpleaños, prebodas y grupos de amigos que quieren cenar y seguir de fiesta en el mismo sitio. No tenemos servicio para público general; cada cena se organiza con antelación con un menú cerrado.',
-      'Cocina mediterránea con acento del sur, servida en la terraza jardín. Los menús cambian con la temporada; aquí tienes la versión actual.',
+      'Cocina mediterránea con acento del sur, servida en la terraza jardín. Abajo tienes los tres menús de eventos 2026–2027: Ares, Zeus y Hermes.',
     ],
     sections: [
-      { h2: 'Cómo funciona una cena de grupo', body: ['Dinos la fecha, el número de personas y la ocasión. Te enviamos los menús y un presupuesto, confirmas con un depósito y esa noche tu mesa está lista en la terraza, con la fiesta a unos pasos.'], bullets: ['Grupos a partir de 25 personas', 'Menús cerrados con copa de bienvenida y vino incluidos', 'Opciones vegetarianas, veganas y sin alérgenos en todos los menús', 'Mesas y servicio de botellas en la pista reservados para los grupos de cena'] },
+      { h2: 'Cómo funciona una cena de grupo', body: ['Dinos la fecha, el número de personas y la ocasión. Te enviamos los menús y un presupuesto, confirmas con un depósito y esa noche tu mesa está lista en la terraza, con la fiesta a unos pasos.'], bullets: ['Grupos a partir de 25 personas', 'Tres menús cerrados desde 45 € por persona + IVA, bebida incluida durante la comida', 'Alternativas para alergias e intolerancias, acordadas con antelación', 'Mesas y servicio de botellas en la pista reservados para los grupos de cena'] },
+      { h2: 'Los menús: Ares, Zeus y Hermes', body: ['Precios por persona, más IVA. Durante el servicio se incluyen vino blanco, tinto y rosado, cerveza Estrella Galicia, agua y refrescos.'], bullets: ['Ares, 45 €: canapés fríos y calientes para compartir (quesos e ibéricos, ensaladilla rusa, tosta de foie, gyozas, brocheta de pollo, mini tacos, croquetas) y postres. Pensado para un cóctel de pie.', 'Zeus, 55 €: entrantes para compartir, presa ibérica con patata dulce o lubina con espinaca y patata baby a elegir, y postres para compartir.', 'Hermes, 60 €: cuatro entrantes para compartir, solomillo de ternera a las cuatro pimientas o bacalao confitado a baja temperatura a elegir, y postres para compartir.'] },
     ],
     faqs: [
+      { q: '¿Cuánto cuestan los menús de grupo?', a: 'Ares cuesta 45 €, Zeus 55 € y Hermes 60 € por persona, más IVA, con bebida incluida durante la comida. Los menús completos están en el PDF de esta página.' },
       { q: '¿Puedo reservar mesa para dos para cenar?', a: 'Por ahora no. Las cenas son para grupos con reserva a partir de 25 personas. Para salir de noche, reserva una mesa VIP en una noche de club desde el calendario.' },
       { q: '¿Hay cenas de grupo todo el año?', a: 'Sí, bajo reserva, también fuera de la temporada de club. Entre semana hay cenas disponibles para empresas.' },
       { q: '¿Podemos elegir los platos por separado?', a: 'Los menús se cierran por grupo para que la cocina sirva a todos a la vez, con alternativas para alergias e intolerancias elegidas con antelación.' },
@@ -436,7 +440,7 @@ const es: Dict = {
       'Primero la cena, después la fiesta, todo en el mismo sitio. Menús de grupo para empresas, clubes y grupos de amigos desde finales de noviembre y durante las fiestas, con la pista abierta después de cenar y tardeos los fines de semana.',
     ],
     sections: [
-      { h2: 'Menús de grupo', body: ['Menús cerrados para grupos a partir de 25 personas, con copa de bienvenida y vino incluidos. Opciones vegetarianas, veganas y sin alérgenos en todos los menús. Comidas y cenas.'] },
+      { h2: 'Menús de grupo', body: ['Tres menús cerrados para grupos a partir de 25 personas, desde 45 € por persona + IVA, con vino, cerveza, agua y refrescos incluidos durante la comida. Alternativas para alergias e intolerancias acordadas con antelación. Comidas y cenas; consulta los menús en el PDF.'] },
       { h2: 'Tardeos', body: ['Durante la Navidad Ágora abre por la tarde para tardeos: sesiones de afterwork y de tarde con DJ, copas y mesas, para celebrarlo con el equipo o con los amigos y estar en casa a una hora razonable. Las fechas se publican en el calendario.'] },
       { h2: 'La fiesta de después', body: ['Las mesas y el servicio de botellas en la pista se reservan para los grupos de cena bajo petición. Las noches especiales de las fiestas se anuncian en el calendario.'] },
       { h2: 'Para empresas', body: ['Una factura, un interlocutor, una zona privada para tu grupo y la opción de local en exclusiva para empresas grandes. Se puede añadir imagen de marca en las pantallas y un momento de premios o discurso.'] },

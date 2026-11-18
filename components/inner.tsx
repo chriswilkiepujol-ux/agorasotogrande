@@ -158,7 +158,7 @@ export function Calendar({ c, locale }: { c: Content; locale: Locale }) {
     <>
       <section className="bg-ink px-5 py-14 md:px-10 lg:px-16" id="calendario">
         <div className="mx-auto max-w-7xl">
-          <div className="overflow-hidden rounded-2xl bg-bone p-2 md:p-4"><FourVenuesEvents /></div>
+          <div className="fv-frame"><FourVenuesEvents view="calendar" /></div>
           <p className="mt-6 text-center text-sm text-bone/50"><a href={media.fourvenues} target="_blank" rel="noopener" className="underline hover:text-bone">{c.ui.bookExternal}</a></p>
         </div>
       </section>
@@ -200,6 +200,25 @@ export function Gallery({ pageKey, photos }: { pageKey: PageKey; photos?: Photo[
   );
 }
 
+/* ---------- event menus band (private-event pages) ---------- */
+export function MenuStrip({ c, locale }: { c: Content; locale: Locale }) {
+  if (!media.menuPdf) return null;
+  return (
+    <section className="border-y border-white/10 bg-night px-5 py-10 md:px-10 lg:px-16">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="kicker">{c.ui.eventMenus}</p>
+          <p className="mt-3 font-display text-2xl md:text-3xl">{c.ui.eventMenusLine}</p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <a href={media.menuPdf} target="_blank" rel="noopener" className="btn btn-solid">{c.ui.seeMenus}</a>
+          <a href={href('menu', locale)} className="btn btn-ghost">{c.nav.menu}</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function MenuBlock({ c }: { c: Content }) {
   return (
     <section className="section bg-ink">
@@ -212,6 +231,7 @@ export function MenuBlock({ c }: { c: Content }) {
                 <a href={media.menuPdf} target="_blank" rel="noopener" className="btn btn-solid">{c.ui.menuOpen}</a>
                 <a href={media.menuPdf} download className="btn btn-ghost">{c.ui.menuDownload}</a>
               </p>
+              {c.ui.menuLang && <p className="mt-3 text-sm text-bone/50">{c.ui.menuLang}</p>}
             </>
           ) : (
             <div className="flex min-h-[320px] items-center justify-center rounded-2xl border border-dashed border-white/20 p-10 text-center text-bone/60">{c.ui.menuSoon}</div>

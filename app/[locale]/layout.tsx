@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { CookieBanner } from '@/components/cookie-banner';
 import { Motion } from '@/components/motion';
 import { FontPreview } from '@/components/font-preview';
+import { NyePromo } from '@/components/nye-promo';
 
 export function generateStaticParams() { return locales.map((locale) => ({ locale })); }
 export const dynamicParams = false;
@@ -16,13 +17,14 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Manrope:wght@400;500;600;700&family=Pinyon+Script&family=Anton&family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Manrope:wght@400;500;600;700&family=Pinyon+Script&family=Anton&family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet" />
       </head>
       <body>
         {children}
         <Motion />
         <FontPreview />
         <CookieBanner c={c} policyHref={href('cookies', params.locale)} />
+        <NyePromo locale={params.locale} eventsHref={href('events', params.locale)} />
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import { pages } from '@/lib/pages';
 import { metaFor } from '@/lib/meta';
 import { Nav } from '@/components/nav';
 import { Footer } from '@/components/footer';
-import { PageHeader, Sections, Faqs, PageCta, EventTiles, Calendar, MenuBlock, ContactBlock, Gallery, jsonLdFor } from '@/components/inner';
+import { PageHeader, Sections, Faqs, PageCta, EventTiles, Calendar, MenuBlock, MenuStrip, ContactBlock, Gallery, jsonLdFor } from '@/components/inner';
 
 type Params = { locale: Locale; slug: string[] };
 
@@ -41,6 +41,7 @@ export default function InnerPage({ params }: { params: Params }) {
         {k === 'menu' && <MenuBlock c={c} />}
         {k === 'contact' ? <ContactBlock c={c} locale={l} /> : <Sections copy={copy} pageKey={k} />}
         {(k === 'events' || k === 'weddings') && <Gallery pageKey={k} />}
+        {(k === 'privateEvents' || isClientType) && <MenuStrip c={c} locale={l} />}
         <Faqs c={c} copy={copy} />
         {isClientType && <EventTiles c={c} locale={l} exclude={k} title={c.ui.otherEvents} />}
         <PageCta copy={copy} locale={l} />
