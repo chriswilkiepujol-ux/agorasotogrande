@@ -58,9 +58,12 @@ export function Footer({ c, locale }: { c: Content; locale: Locale }) {
           <a href={href('privacy', locale)} className={link}>{c.footer.privacy}</a>
           <a href={href('cookies', locale)} className={link}>{c.footer.cookies}</a>
           <span className="hidden h-3 w-px bg-white/15 md:inline-block" aria-hidden="true" />
-          <a href="https://impulsomedia.es" target="_blank" rel="noopener" className={link}>
-            {c.footer.poweredBy} <span className="font-semibold text-bone/70">ImpulsoMedia</span>
-          </a>
+          <span>
+            {c.footer.poweredBy}{' '}
+            <a href="https://impulsomedia.es" target="_blank" rel="noopener" className={`${link} font-semibold text-bone/70`}>
+              ImpulsoMedia
+            </a>
+          </span>
         </div>
       </div>
     </footer>
