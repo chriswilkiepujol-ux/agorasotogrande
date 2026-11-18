@@ -104,7 +104,7 @@ const en = {
     menusTitle: 'Our event menus',
     menusIntro: 'Three set menus for groups, prices per person plus VAT, with wine, beer, water and soft drinks included during the meal. Tap a menu to open it.',
     menuCards: [
-      { page: 1, name: 'Event menus 2026–2027', price: '', note: 'Open all three menus' },
+      { page: 1, name: 'All menus', price: '', note: 'Open all three menus' },
       { page: 2, name: 'Ares', price: '€45', note: 'Hot and cold canapés to share' },
       { page: 3, name: 'Zeus', price: '€55', note: 'Starters to share and a main to choose' },
       { page: 4, name: 'Hermes', price: '€60', note: 'Starters, sirloin or confit cod' },
@@ -196,7 +196,7 @@ const es: typeof en = {
     menusTitle: 'Nuestros menús de eventos',
     menusIntro: 'Tres menús cerrados para grupos, precio por persona más IVA, con vino, cerveza, agua y refrescos incluidos durante la comida. Toca un menú para abrirlo.',
     menuCards: [
-      { page: 1, name: 'Menús de eventos 2026–2027', price: '', note: 'Abrir los tres menús' },
+      { page: 1, name: 'Todos los menús', price: '', note: 'Abrir los tres menús' },
       { page: 2, name: 'Ares', price: '45 €', note: 'Canapés fríos y calientes para compartir' },
       { page: 3, name: 'Zeus', price: '55 €', note: 'Entrantes para compartir y principal a elegir' },
       { page: 4, name: 'Hermes', price: '60 €', note: 'Entrantes, solomillo o bacalao confitado' },
