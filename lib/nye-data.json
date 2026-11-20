@@ -1,14 +1,56 @@
 {
   "eventHash": "events/nye---2026-31-12-2026-Q3UL",
-  "checked": "2026-11-18T15:50:00.000Z",
+  "checked": "2026-11-20T16:54:46.952Z",
   "releases": [
-    { "n": 1, "name": "1ST RELEASE", "price": 55, "status": "sold" },
-    { "n": 2, "name": "2ND RELEASE", "price": 60, "status": "sold" },
-    { "n": 3, "name": "3RD RELEASE", "price": 65, "status": "sold" },
-    { "n": 4, "name": "4TH RELEASE", "price": 70, "status": "sold" },
-    { "n": 5, "name": "5TH RELEASE", "price": 75, "status": "sold" },
-    { "n": 6, "name": "6TH RELEASE", "price": 80, "status": "on" },
-    { "n": 7, "name": "FINAL ONLINE RELEASE", "price": 85, "status": "next", "final": true, "fewLeft": true }
+    {
+      "n": 1,
+      "name": "1ST RELEASE",
+      "price": 55,
+      "status": "sold"
+    },
+    {
+      "n": 2,
+      "name": "2ND RELEASE",
+      "price": 60,
+      "status": "sold"
+    },
+    {
+      "n": 3,
+      "name": "3RD RELEASE",
+      "price": 65,
+      "status": "sold"
+    },
+    {
+      "n": 4,
+      "name": "4TH RELEASE",
+      "price": 70,
+      "status": "sold"
+    },
+    {
+      "n": 5,
+      "name": "5TH RELEASE",
+      "price": 75,
+      "status": "sold"
+    },
+    {
+      "n": 6,
+      "name": "6TH RELEASE",
+      "price": 80,
+      "status": "on",
+      "fewLeft": true
+    },
+    {
+      "n": 7,
+      "name": "FINAL ONLINE RELEASE",
+      "price": 85,
+      "status": "next",
+      "final": true,
+      "fewLeft": true
+    }
   ],
-  "vip": { "price": 90, "fewLeft": true, "soldOut": false }
+  "vip": {
+    "price": 90,
+    "fewLeft": true,
+    "soldOut": false
+  }
 }
