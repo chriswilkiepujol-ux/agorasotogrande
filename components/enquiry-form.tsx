@@ -14,7 +14,26 @@ export function EnquiryForm({ c, locale, privacyHref }: { c: Content; locale: Lo
     const data = Object.fromEntries(new FormData(e.currentTarget).entries());
     try {
       const r = await fetch('/api/enquiry/', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...data, locale }) });
-      setState(r.ok ? 'ok' : 'fail');
+      const res = await r.json().catch(() => ({}));
+      if (!r.ok) { setState('fail'); return; }
+      if (res.deliver === 'formsubmit' && !data.website) {
+        // Email the enquiry to info@ (FormSubmit only accepts browser submissions).
+        const labels: [string, string][] = [['name', 'Name'], ['email', 'Email'], ['phone', 'Phone'], ['type', 'Type of event'], ['date', 'Date'], ['guests', 'Guests'], ['budget', 'Budget'], ['message', 'Message']];
+        const mail: Record<string, string> = {
+          _subject: `Web enquiry: ${String(data.type ?? 'event')} · ${String(data.name ?? '')}${data.date ? ` · ${String(data.date)}` : ''}`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: String(data.email ?? ''),
+          Language: locale === 'es' ? 'Español' : 'English',
+          Page: window.location.href,
+        };
+        for (const [k, l] of labels) if (data[k]) mail[l] = String(data[k]);
+        const m = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(res.to)}`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(mail) });
+        const mr = await m.json().catch(() => ({}));
+        setState(m.ok && String(mr.success) !== 'false' ? 'ok' : 'fail');
+        return;
+      }
+      setState('ok');
     } catch { setState('fail'); }
   }
 

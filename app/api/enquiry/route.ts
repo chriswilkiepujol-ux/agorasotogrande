@@ -3,9 +3,10 @@ import { NextResponse } from 'next/server';
 /* Enquiry endpoint. Validates, logs a copy (Vercel logs, as a backup), then delivers by the first option set:
    1. RESEND_API_KEY  → emails via Resend (needs the domain verified there; optional upgrade).
    2. ENQUIRY_WEBHOOK → POSTs the JSON to any URL (Make, Zapier, a CRM).
-   3. default         → FormSubmit (formsubmit.co): emails the enquiry to ENQUIRY_TO (default
-                        info@agorasotogrande.com) with Reply going to the sender. No account or key; the
-                        very first enquiry triggers a one-time "Activate Form" email to that inbox. */
+   3. default         → FormSubmit (formsubmit.co), sent from the visitor's browser by the form: emails the
+                        enquiry to ENQUIRY_TO (default info@agorasotogrande.com) with Reply going to the
+                        sender. No account or key; the very first enquiry triggers a one-time
+                        "Activate Form" email to that inbox. */
 
 const esc = (v: unknown) => String(v ?? '').replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch] as string));
 
@@ -49,27 +50,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // Default: FormSubmit → info@agorasotogrande.com
+  // Default: FormSubmit → info@agorasotogrande.com. FormSubmit only accepts submissions sent from a
+  // visitor's browser (server requests get 403), so the browser sends it after this check and log.
   const to = process.env.ENQUIRY_TO ?? 'info@agorasotogrande.com';
-  const mail: Record<string, string> = {
-    _subject: `Web enquiry: ${String(body.type ?? 'event')} · ${name}${body.date ? ` · ${body.date}` : ''}`,
-    _template: 'table',
-    _captcha: 'false',
-    _replyto: email,
-  };
-  for (const [k, v] of fields) if (v !== undefined && v !== '') mail[k] = String(v);
-  try {
-    const r = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', accept: 'application/json', origin: 'https://agorasotogrande.com', referer: 'https://agorasotogrande.com/contact/' },
-      body: JSON.stringify(mail),
-    });
-    const res = await r.json().catch(() => ({} as Record<string, unknown>));
-    console.log('[enquiry] formsubmit', r.status, JSON.stringify(res));
-    if (!r.ok) return NextResponse.json({ ok: false }, { status: 502 });
-  } catch (e) {
-    console.error('[enquiry] formsubmit failed', e);
-    return NextResponse.json({ ok: false }, { status: 502 });
-  }
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, deliver: 'formsubmit', to });
 }
