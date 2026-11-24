@@ -82,8 +82,8 @@ html[data-font="helvetica"] .font-display, html[data-font="helvetica"] .h-displa
 @media (min-width: 768px) { .nye-modal { max-width: 860px; grid-template-columns: 5fr 7fr; grid-template-rows: none; overflow: hidden; } }
 /* Flyer: a banner that fades into the panel on phones; a full-height column on desktop. */
 .nye-flyer { position: relative; background: #000; overflow: hidden; }
-.nye-flyer img { display: block; width: 100%; height: 26svh; max-height: 230px; object-fit: cover; object-position: 50% 38%; }
-.nye-flyer::after { content: ""; position: absolute; inset: auto 0 0 0; height: 55%; background: linear-gradient(to bottom, transparent, #0b0b0d); }
+.nye-flyer img { display: block; width: 100%; height: auto; max-height: 34svh; object-fit: cover; object-position: 50% 0%; }
+.nye-flyer::after { content: ""; position: absolute; inset: auto 0 0 0; height: 30%; background: linear-gradient(to bottom, transparent, #0b0b0d); }
 @media (min-width: 768px) {
   .nye-flyer img { position: absolute; inset: 0; height: 100%; max-height: none; }
   .nye-flyer::after { inset: 0 0 0 auto; width: 30%; height: auto; background: linear-gradient(to right, transparent, #0b0b0d); }
@@ -97,6 +97,8 @@ html[data-font="helvetica"] .font-display, html[data-font="helvetica"] .h-displa
 .nye-badge { display: inline-flex; align-items: center; gap: .4rem; padding: .2rem .6rem; border-radius: 999px; background: rgba(201,134,91,.14); color: #e3a57d; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .nye-badge-dot { width: .4rem; height: .4rem; border-radius: 999px; background: #e8623a; animation: nye-pulse 1.8s ease-in-out infinite; }
 .nye-price { font-family: 'Bodoni Moda', Didot, Georgia, serif; font-variation-settings: 'opsz' 24; font-weight: 600; font-size: 2.6rem; line-height: 1; color: #f3efe7; font-variant-numeric: lining-nums; }
+.nye-cur { font-family: Manrope, system-ui, sans-serif; font-weight: 500; font-size: .62em; vertical-align: .38em; margin-right: .08em; }
+.nye-cur-after { margin-right: 0; margin-left: .1em; }
 .nye-bar { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; }
 .nye-seg { height: 6px; border-radius: 999px; }
 .nye-seg-sold { background: rgba(243,239,231,.22); }

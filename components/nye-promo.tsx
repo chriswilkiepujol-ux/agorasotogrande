@@ -106,7 +106,11 @@ export function NyePromo({ locale, eventsHref }: { locale: Locale; eventsHref: s
             </button>
 
             <div className="nye-flyer" aria-hidden="true">
-              <img src={nye.flyer} alt="" />
+              {/* Phones get a landscape crop of the vertical flyer (logo to "EVE") so the logo isn't cut off. */}
+              <picture>
+                <source media="(min-width: 768px)" srcSet={nye.flyer} />
+                <img src={nye.flyerMobile} alt="" />
+              </picture>
             </div>
 
             <div className="nye-body">
@@ -124,7 +128,10 @@ export function NyePromo({ locale, eventsHref }: { locale: Locale; eventsHref: s
                         <p className="mt-2 text-sm font-semibold text-bone">{t.releaseName(current.n, current.final)}{current.fewLeft ? ` · ${t.fewLeft}` : ''}</p>
                       </div>
                       <div className="text-right">
-                        <p className="nye-price">{euro(current.price)}</p>
+                        {/* The display serif's € reads like a "C" at this size, so the symbol uses the body font. */}
+                        <p className="nye-price">
+                          {locale === 'es' ? <>{current.price}<span className="nye-cur nye-cur-after">€</span></> : <><span className="nye-cur">€</span>{current.price}</>}
+                        </p>
                         <p className="text-[11px] text-bone/50">{t.perPerson}</p>
                       </div>
                     </div>

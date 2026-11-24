@@ -17,6 +17,7 @@ export const nye = {
   // FourVenues event route; /events/#<eventHash> opens the event inside our own calendar.
   eventHash: data.eventHash,
   flyer: '/promo/nye-2027.jpg',
+  flyerMobile: '/promo/nye-2027-mobile.jpg',
   // General admission: entry + open bar all night.
   releases: data.releases as Release[],
   // VIP pass, over-25s only.
