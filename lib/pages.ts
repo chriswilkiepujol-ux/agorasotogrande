@@ -26,7 +26,7 @@ export const venue = {
   province: 'Cádiz',
   phone: '+34 669 99 78 88',
   phoneHref: 'tel:+34669997888',
-  email: 'info@agorasotogrande.com',
+  email: 'agorasotogrande@gmail.com',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=%C3%81gora+Sotogrande&query_place_id=ChIJmVaw4SfDDA0RM3IsvnbSuo4',
   reviewsUrl: 'https://search.google.com/local/reviews?placeid=ChIJmVaw4SfDDA0RM3IsvnbSuo4',
   writeReviewUrl: 'https://search.google.com/local/writereview?placeid=ChIJmVaw4SfDDA0RM3IsvnbSuo4',
@@ -267,7 +267,7 @@ const en: Dict = {
     description: 'Legal notice and terms of use of agorasotogrande.com.',
     kicker: 'Legal',
     h1: 'Legal Notice',
-    intro: ['This website is operated by [COMPANY LEGAL NAME], CIF [CIF], registered address [ADDRESS], Sotogrande, San Roque (Cádiz), Spain. Contact: info@agorasotogrande.com.'],
+    intro: ['This website is operated by [COMPANY LEGAL NAME], CIF [CIF], registered address [ADDRESS], Sotogrande, San Roque (Cádiz), Spain. Contact: agorasotogrande@gmail.com.'],
     sections: [
       { h2: 'Use of the site', body: ['Access to and use of this website is subject to these terms. The content is for information purposes; event availability and prices are confirmed in writing when you book.'] },
       { h2: 'Intellectual property', body: ['Texts, images, logos and video on this site belong to the operator or are used under licence. Reproduction without written permission is not allowed.'] },
@@ -284,7 +284,7 @@ const en: Dict = {
       { h2: 'What we collect and why', body: ['Name, email, phone and the details of your enquiry, to answer it and prepare a proposal. Legal basis: pre-contractual measures at your request.'] },
       { h2: 'How long we keep it', body: ['Enquiries are kept for one year. Data linked to a booking is kept for the period required by tax law.'] },
       { h2: 'Who we share it with', body: ['Nobody outside the company, except the providers who host this site and our email, under data processing agreements. Ticket and table sales are processed by FourVenues under its own privacy policy.'] },
-      { h2: 'Your rights', body: ['Access, rectification, erasure, restriction, portability and objection, by writing to info@agorasotogrande.com. You can also complain to the Spanish Data Protection Agency (aepd.es).'] },
+      { h2: 'Your rights', body: ['Access, rectification, erasure, restriction, portability and objection, by writing to agorasotogrande@gmail.com. You can also complain to the Spanish Data Protection Agency (aepd.es).'] },
     ],
   },
   cookies: {
@@ -528,7 +528,7 @@ const es: Dict = {
     description: 'Aviso legal y condiciones de uso de agorasotogrande.com.',
     kicker: 'Legal',
     h1: 'Aviso legal',
-    intro: ['Este sitio web es titularidad de [RAZÓN SOCIAL], CIF [CIF], con domicilio en [DIRECCIÓN], Sotogrande, San Roque (Cádiz). Contacto: info@agorasotogrande.com.'],
+    intro: ['Este sitio web es titularidad de [RAZÓN SOCIAL], CIF [CIF], con domicilio en [DIRECCIÓN], Sotogrande, San Roque (Cádiz). Contacto: agorasotogrande@gmail.com.'],
     sections: [
       { h2: 'Uso del sitio', body: ['El acceso y uso de este sitio web se rigen por estas condiciones. El contenido es informativo; la disponibilidad y los precios de los eventos se confirman por escrito al reservar.'] },
       { h2: 'Propiedad intelectual', body: ['Los textos, imágenes, logotipos y vídeos de este sitio pertenecen al titular o se usan bajo licencia. No está permitida su reproducción sin autorización escrita.'] },
@@ -545,7 +545,7 @@ const es: Dict = {
       { h2: 'Qué datos recogemos y para qué', body: ['Nombre, email, teléfono y los detalles de tu consulta, para responderla y preparar una propuesta. Base legal: medidas precontractuales a petición del interesado.'] },
       { h2: 'Cuánto tiempo los guardamos', body: ['Las consultas se conservan un año. Los datos vinculados a una reserva se conservan el plazo que exige la normativa fiscal.'] },
       { h2: 'Con quién los compartimos', body: ['Con nadie fuera de la empresa, salvo los proveedores que alojan este sitio y nuestro correo, bajo contrato de encargado de tratamiento. La venta de entradas y mesas la gestiona FourVenues bajo su propia política de privacidad.'] },
-      { h2: 'Tus derechos', body: ['Acceso, rectificación, supresión, limitación, portabilidad y oposición, escribiendo a info@agorasotogrande.com. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).'] },
+      { h2: 'Tus derechos', body: ['Acceso, rectificación, supresión, limitación, portabilidad y oposición, escribiendo a agorasotogrande@gmail.com. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).'] },
     ],
   },
   cookies: {
