@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 
-/* Enquiry endpoint. Validates, then delivers by the first configured channel:
-   1. RESEND_API_KEY  → emails the enquiry to ENQUIRY_TO (default info@agorasotogrande.com) with reply-to set
-                        to the sender, so Adolfo answers from his inbox. From-address needs the domain verified
-                        in Resend (ENQUIRY_FROM, e.g. "Ágora Web <web@agorasotogrande.com>").
+/* Enquiry endpoint. Validates, logs a copy (Vercel logs, as a backup), then delivers by the first option set:
+   1. RESEND_API_KEY  → emails via Resend (needs the domain verified there; optional upgrade).
    2. ENQUIRY_WEBHOOK → POSTs the JSON to any URL (Make, Zapier, a CRM).
-   3. neither         → accepted and logged, so the form can be tested end to end on the testing site. */
+   3. default         → FormSubmit (formsubmit.co): emails the enquiry to ENQUIRY_TO (default
+                        info@agorasotogrande.com) with Reply going to the sender. No account or key; the
+                        very first enquiry triggers a one-time "Activate Form" email to that inbox. */
 
 const esc = (v: unknown) => String(v ?? '').replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch] as string));
 
@@ -18,6 +18,7 @@ export async function POST(req: Request) {
   if (String(body.website ?? '')) return NextResponse.json({ ok: true }); // honeypot filled by a bot: pretend success
 
   const payload = { ...body, receivedAt: new Date().toISOString(), source: 'agorasotogrande.com' };
+  console.log('[enquiry]', JSON.stringify(payload)); // backup copy in Vercel logs
   const fields: [string, unknown][] = [
     ['Name', body.name], ['Email', body.email], ['Phone', body.phone], ['Type of event', body.type],
     ['Date', body.date], ['Guests', body.guests], ['Budget', body.budget], ['Message', body.message], ['Language', body.locale],
@@ -45,8 +46,30 @@ export async function POST(req: Request) {
   if (hook) {
     const r = await fetch(hook, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
     if (!r.ok) return NextResponse.json({ ok: false }, { status: 502 });
-  } else {
-    console.log('[enquiry]', JSON.stringify(payload));
+    return NextResponse.json({ ok: true });
+  }
+
+  // Default: FormSubmit → info@agorasotogrande.com
+  const to = process.env.ENQUIRY_TO ?? 'info@agorasotogrande.com';
+  const mail: Record<string, string> = {
+    _subject: `Web enquiry: ${String(body.type ?? 'event')} · ${name}${body.date ? ` · ${body.date}` : ''}`,
+    _template: 'table',
+    _captcha: 'false',
+    _replyto: email,
+  };
+  for (const [k, v] of fields) if (v !== undefined && v !== '') mail[k] = String(v);
+  try {
+    const r = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', accept: 'application/json', origin: 'https://agorasotogrande.com', referer: 'https://agorasotogrande.com/contact/' },
+      body: JSON.stringify(mail),
+    });
+    const res = await r.json().catch(() => ({} as Record<string, unknown>));
+    console.log('[enquiry] formsubmit', r.status, JSON.stringify(res));
+    if (!r.ok) return NextResponse.json({ ok: false }, { status: 502 });
+  } catch (e) {
+    console.error('[enquiry] formsubmit failed', e);
+    return NextResponse.json({ ok: false }, { status: 502 });
   }
   return NextResponse.json({ ok: true });
 }
