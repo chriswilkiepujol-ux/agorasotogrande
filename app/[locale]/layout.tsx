@@ -5,6 +5,7 @@ import { CookieBanner } from '@/components/cookie-banner';
 import { Motion } from '@/components/motion';
 import { FontPreview } from '@/components/font-preview';
 import { NyePromo } from '@/components/nye-promo';
+import { SiteAnalytics } from '@/components/analytics';
 
 export function generateStaticParams() { return locales.map((locale) => ({ locale })); }
 export const dynamicParams = false;
@@ -25,6 +26,7 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
         <FontPreview />
         <CookieBanner c={c} policyHref={href('cookies', params.locale)} />
         <NyePromo locale={params.locale} eventsHref={href('events', params.locale)} />
+        <SiteAnalytics />
       </body>
     </html>
   );

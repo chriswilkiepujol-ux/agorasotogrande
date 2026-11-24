@@ -24,20 +24,35 @@ const nextConfig = {
   // Redirect map — see docs/url-architecture.md. Every old URL gets exactly one 301, straight to its destination.
   async redirects() {
     const home = (source) => ({ source, destination: '/', statusCode: 301 });
+    // At launch (NEXT_PUBLIC_INDEXABLE=true on production) the testing address forwards to the real
+    // domain, so Google never sees two copies of the site.
+    const live = process.env.NEXT_PUBLIC_INDEXABLE === 'true'
+      ? [{ source: '/:path*', has: [{ type: 'host', value: 'agorasotogrande.vercel.app' }], destination: 'https://agorasotogrande.com/:path*', statusCode: 301 }]
+      : [];
     return [
+      ...live,
       // /en/ must never exist publicly as a duplicate of the root.
       { source: '/en', destination: '/', statusCode: 301 },
       { source: '/en/:path*', destination: '/:path*/', statusCode: 301 },
 
       // The four real pages keep their URLs (no redirect). Everything else from WordPress:
       home('/2641-2'),
-      home('/2022/:path*'),
+      home('/954'),
+      home('/969'),
+      home('/5a7e0bde-ba66-427b-b9d9-876755599db9'),
+      home('/sample-page'),
+      home('/:year(20\\d{2})/:path*'),
       home('/category/:path*'),
+      home('/tag/:path*'),
       { source: '/author/:path*', destination: '/about/', statusCode: 301 },
 
       // Old menu PDFs (AGORA-MENU-2024, wine and bottle menus) were the most-clicked links on the old site
       // (~5,400 clicks in Jetpack). Send anyone with a saved or shared link to the menu page.
-      { source: '/wp-content/uploads/:path*', destination: '/menu/', statusCode: 301 },
+      { source: '/wp-content/uploads/:path(.*\\.pdf)', destination: '/menu/', statusCode: 301 },
+      // Any other old WordPress file (images, theme assets) goes to the home page.
+      home('/wp-content/:path*'),
+      home('/wp-includes/:path*'),
+      home('/index.php'),
 
       // Yoast sitemap names Google already knows
       { source: '/sitemap_index.xml', destination: '/sitemap.xml', statusCode: 301 },
