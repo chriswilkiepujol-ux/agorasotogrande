@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
    1. RESEND_API_KEY  → emails via Resend (needs the domain verified there; optional upgrade).
    2. ENQUIRY_WEBHOOK → POSTs the JSON to any URL (Make, Zapier, a CRM).
    3. default         → FormSubmit (formsubmit.co), sent from the visitor's browser by the form: emails the
-                        enquiry to ENQUIRY_TO (default agorasotogrande@gmail.com) with Reply going to the
+                        enquiry to ENQUIRY_TO (default info@agorasotogrande.com) with Reply going to the
                         sender. No account or key; the very first enquiry triggers a one-time
                         "Activate Form" email to that inbox. */
 
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   ];
 
   if (process.env.RESEND_API_KEY) {
-    const to = process.env.ENQUIRY_TO ?? 'agorasotogrande@gmail.com';
+    const to = process.env.ENQUIRY_TO ?? 'info@agorasotogrande.com';
     const from = process.env.ENQUIRY_FROM ?? 'Ágora Web <onboarding@resend.dev>';
     const subject = `Enquiry: ${String(body.type ?? 'event')} · ${name}${body.date ? ` · ${body.date}` : ''}`;
     const html = `<h2 style="font-family:sans-serif">New enquiry from agorasotogrande.com</h2>
@@ -50,8 +50,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // Default: FormSubmit → agorasotogrande@gmail.com. FormSubmit only accepts submissions sent from a
+  // Default: FormSubmit → info@agorasotogrande.com. FormSubmit only accepts submissions sent from a
   // visitor's browser (server requests get 403), so the browser sends it after this check and log.
-  const to = process.env.ENQUIRY_TO ?? 'agorasotogrande@gmail.com';
+  const to = process.env.ENQUIRY_TO ?? 'info@agorasotogrande.com';
   return NextResponse.json({ ok: true, deliver: 'formsubmit', to });
 }
