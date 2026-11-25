@@ -2,6 +2,7 @@
 import { media, type Content, type Locale } from '@/lib/content';
 import { href, SITE, clientTypeKeys, type PageKey } from '@/lib/routes';
 import { pages, weeklyNights, venue, type PageCopy } from '@/lib/pages';
+import { nye } from '@/lib/nye';
 import { SocialLinks } from '@/components/social';
 import FourVenuesEvents from '@/components/fourvenues-events';
 import { EnquiryForm } from '@/components/enquiry-form';
@@ -317,10 +318,33 @@ export function jsonLdFor(pageKey: PageKey, locale: Locale) {
     '@type': 'BreadcrumbList',
     itemListElement: crumbs.map((cr, i) => ({ '@type': 'ListItem', position: i + 1, name: cr.name, item: cr.item })),
   }];
-  if (pageKey === 'events') {
-    for (const n of weeklyNights) graph.push({
-      '@type': 'Event', name: `${n.name} at Ágora Sotogrande`, eventSchedule: { '@type': 'Schedule', byDay: `https://schema.org/${n.weekday}`, startTime: n.time, repeatFrequency: 'P1W' },
-      location: { '@id': SITE + '/#venue' }, organizer: { '@id': SITE + '/#venue' }, image: media.posters[n.poster], offers: { '@type': 'Offer', url: media.fourvenues },
+  // Google only accepts dated events, so the weekly summer nights (no fixed date) are not marked up.
+  // New Year's Eve is: real date, current release price from lib/nye-data.json. Dropped after the cut-off.
+  if ((pageKey === 'events' || pageKey === 'home') && nye.active && Date.now() < Date.parse(nye.endsAt)) {
+    const on = nye.releases.find((r) => r.status === 'on');
+    graph.push({
+      '@type': 'Event',
+      name: locale === 'es' ? 'Nochevieja 2026 en Ágora Sotogrande' : "New Year's Eve 2026 at Ágora Sotogrande",
+      description: locale === 'es'
+        ? 'Recibe el 2027 en Ágora Sotogrande: barra libre toda la noche, de 00:30 a 06:00. Etiqueta, +18. Pase VIP para mayores de 25.'
+        : "Ring in 2027 at Ágora Sotogrande: open bar all night, 00:30 to 06:00. Black tie, 18+. VIP pass for over-25s.",
+      startDate: '2027-01-01T00:30:00+01:00',
+      endDate: '2027-01-01T06:00:00+01:00',
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      image: [SITE + nye.flyer],
+      location: { '@type': 'Place', name: 'Ágora Sotogrande', address: org.address },
+      organizer: { '@type': 'Organization', name: 'Ágora Sotogrande', url: SITE + '/' },
+      performer: { '@type': 'PerformingGroup', name: locale === 'es' ? 'DJs residentes de Ágora' : 'Ágora resident DJs' },
+      offers: {
+        '@type': 'Offer',
+        url: SITE + href('events', locale) + '#' + nye.eventHash,
+        price: String((on ?? nye.releases[nye.releases.length - 1]).price),
+        priceCurrency: 'EUR',
+        availability: on ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
+        validFrom: '2026-10-01T00:00:00+02:00',
+      },
+      inLanguage: locale,
     });
   }
   const copy = pageKey === 'home' ? null : pages[locale][pageKey as Exclude<PageKey, 'home'>];
