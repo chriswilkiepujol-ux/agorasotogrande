@@ -16,19 +16,20 @@ export function Hero({ c, locale }: P) {
     <section className="relative grain flex min-h-[100svh] items-center justify-center overflow-hidden" id="top">
       <HeroVideo src={media.video} poster={media.poster} />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink" />
-      <div className="relative z-10 flex flex-col items-center px-6 pb-36 pt-24 text-center md:pb-40">
+      {/* Sizes follow the screen's height as well as its width, so short laptop screens keep the same proportions as big ones. */}
+      <div className="relative z-10 flex flex-col items-center px-6 pb-[clamp(120px,20svh,160px)] pt-[clamp(80px,12svh,120px)] text-center">
         {/* Official logo with script "Sotogrande" (Adolfo, 26 Nov). No "Welcome to" line above it. */}
-        <h1 className="w-[86vw] max-w-[760px]">
+        <h1 className="w-[min(86vw,760px,90svh)]">
           <img src="/brand/agora-logo-hero-script.png" alt="Ágora Sotogrande" width={1588} height={508} className="h-auto w-full drop-shadow-[0_4px_30px_rgba(0,0,0,.35)]" fetchPriority="high" />
         </h1>
-        <p className="mt-8 font-display text-2xl italic text-bone md:mt-10 md:text-4xl">{c.hero.tagline}</p>
+        <p className="mt-[clamp(16px,4svh,40px)] font-display text-2xl italic text-bone md:text-[clamp(1.75rem,4.2svh,2.25rem)]">{c.hero.tagline}</p>
         <p className="mt-3 max-w-md text-sm text-bone/70 md:max-w-none md:text-base">{c.hero.sub}</p>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-[clamp(20px,4.5svh,40px)] flex flex-wrap items-center justify-center gap-3">
           <a href="#calendario" className="btn btn-solid">{c.hero.cta1}</a>
           <a href={href('privateEvents', locale)} className="btn btn-ghost">{c.hero.cta2}</a>
         </div>
       </div>
-      <a href="#calendario" className="scroll-cue absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-bone/85 transition hover:text-bone md:bottom-8" aria-label={scrollLabel}>
+      <a href="#calendario" className="scroll-cue absolute bottom-[clamp(12px,3svh,32px)] left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-bone/85 transition hover:text-bone [@media(max-height:760px)]:scale-75 [@media(max-height:760px)]:origin-bottom" aria-label={scrollLabel}>
         <Mark size={64} />
         <span className="text-[10px] font-semibold uppercase tracking-[0.35em]">{scrollLabel}</span>
         <svg width="22" height="30" viewBox="0 0 22 30" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
