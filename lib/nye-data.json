@@ -1,6 +1,6 @@
 {
   "eventHash": "events/nye---2026-31-12-2026-Q3UL",
-  "checked": "2026-11-20T16:54:46.952Z",
+  "checked": "2026-11-27T08:54:47.768Z",
   "releases": [
     {
       "n": 1,
@@ -44,8 +44,7 @@
       "name": "FINAL ONLINE RELEASE",
       "price": 85,
       "status": "next",
-      "final": true,
-      "fewLeft": true
+      "final": true
     }
   ],
   "vip": {
